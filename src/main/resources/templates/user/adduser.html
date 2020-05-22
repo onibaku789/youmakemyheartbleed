@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new user</title>
+</head>
+<body>
+<form action="#" th:action="@{/adduser}" th:object="${item}" method="post">
+
+
+    <label for="firstName">Fist Name</label>
+    <input type="text" id="firstName" th:field="*{firstName}"/>
+    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p><br>
+
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" th:field="*{lastName}"/>
+    <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p><br>
+
+    <label for="birthId">Birth id</label>
+    <input type="number" id="birthId" th:field="*{birthId}"/>
+    <p th:if="${#fields.hasErrors('birthId')}" th:errors="*{birthId}"></p><br>
+
+    <label for="email">e-mail</label>
+    <input type="text" id="email" th:field="*{email}"/>
+    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p><br>
+
+
+    <label for="addrZipCode">address</label>
+    <input type="text" id="addrZipCode" th:field="*{addrZipCode}"/>
+    <p th:if="${#fields.hasErrors('addrZipCode')}" th:errors="*{addrZipCode}"></p><br>
+
+    <label for="addrTown">address</label>
+    <input type="text" id="addrTown" th:field="*{addrTown}"/>
+    <p th:if="${#fields.hasErrors('addrTown')}" th:errors="*{addrTown}"></p><br>
+
+    <label for="addrStreet">address</label>
+    <input type="text" id="addrStreet" th:field="*{addrStreet}"/>
+    <p th:if="${#fields.hasErrors('addrZipCode')}" th:errors="*{addrStreet}"></p><br>
+
+    <label for="addrHouseNumber">address</label>
+    <input type="text" id="addrHouseNumber" th:field="*{addrHouseNumber}"/>
+    <p th:if="${#fields.hasErrors('addrHouseNumber')}" th:errors="*{addrHouseNumber}"></p><br>
+
+    <label for="correspaddrZipCode">address</label>
+    <input type="text" id="correspaddrZipCode" th:field="*{correspaddrZipCode}"/>
+    <p th:if="${#fields.hasErrors('correspaddrZipCode')}" th:errors="*{correspaddrZipCode}"></p><br>
+
+    <label for="correspaddrTown">address</label>
+    <input type="text" id="correspaddrTown" th:field="*{correspaddrTown}"/>
+    <p th:if="${#fields.hasErrors('correspaddrTown')}" th:errors="*{correspaddrTown}"></p><br>
+
+    <label for="correspaddrStreet">address</label>
+    <input type="text" id="correspaddrStreet" th:field="*{correspaddrStreet}"/>
+    <p th:if="${#fields.hasErrors('correspaddrStreet')}" th:errors="*{correspaddrStreet}"></p><br>
+
+    <label for="correspaddrHouseNumber">address</label>
+    <input type="text" id="correspaddrHouseNumber" th:field="*{correspaddrHouseNumber}"/>
+    <p th:if="${#fields.hasErrors('correspaddrHouseNumber')}" th:errors="*{correspaddrHouseNumber}"></p><br>
+
+
+
+
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>

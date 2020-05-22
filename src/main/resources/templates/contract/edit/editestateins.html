@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit estate insurance</title>
+</head>
+<body>
+<form th:action="@{/}" th:object="${item}" method="post">
+
+    <label for="date">Begin Date</label>
+    <input type="date" id="date" th:field="*{date}"/>
+    <p th:if="${#fields.hasErrors('begindate')}" th:errors="*{date}"></p><br>
+
+    <label for="date">End Date</label>
+    <input type="date" id="date" th:field="*{date}"/>
+    <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{date}"></p><br>
+
+    <label for="contractPrice">Contract Price</label>
+    <input type="number" id="contractPrice" th:field="*{contractPrice}"/>
+    <p th:if="${#fields.hasErrors('contractPrice')}" th:errors="*{contractPrice}"></p><br>
+
+    <label for="monthlyFee">Monthly Fee</label>
+    <input type="number" id="MonthlyFee" th:field="*{monthlyFee}"/>
+    <p th:if="${#fields.hasErrors('monthlyFee')}" th:errors="*{monthlyFee}"></p><br>
+
+    <label for="estateType">Estate Type</label>
+    <input type="text" id="estateType" th:field="*{estateType}"/>
+    <p th:if="${#fields.hasErrors('estateType')}" th:errors="*{estateType}"></p><br>
+
+    <label for="estateAddress">Estate Address</label>
+    <input type="text" id="estateAddress" th:field="*{estateAddress}"/>
+    <p th:if="${#fields.hasErrors('estateAddress')}" th:errors="*{estateAddress}"></p><br>
+
+    <label for="estatePrice">Estate Price</label>
+    <input type="number" id="estatePrice" th:field="*{estatePrice}"/>
+    <p th:if="${#fields.hasErrors('estatePrice')}" th:errors="*{estatePrice}"></p><br>
+
+    <label for="garage">Garage</label>
+    <input type="number" id="garage" th:field="*{garage}"/>
+    <p th:if="${#fields.hasErrors('garage')}" th:errors="*{garage}"></p><br>
+
+
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>

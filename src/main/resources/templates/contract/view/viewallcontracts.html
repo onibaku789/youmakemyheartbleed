@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contracts</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+          integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+</head>
+<body>
+<table class="pure-table pure-table-bordered">
+    <thead>
+    <tr>
+        <th class="mdl-data-table__cell--non-numeric">Contract Id</th>
+        <th class="mdl-data-table__cell--non-numeric">Date</th>
+        <th class="mdl-data-table__cell--non-numeric">User</th>
+        <th class="mdl-data-table__cell--non-numeric">Begin Date</th>
+        <th class="mdl-data-table__cell--non-numeric">End Date</th>
+        <th class="mdl-data-table__cell--non-numeric">Contract Price</th>
+        <th class="mdl-data-table__cell--non-numeric">Monthly Fee</th>
+        <th class="mdl-data-table__cell--non-numeric">Contract Type</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item: ${items}">
+        <td th:text="${item.contractId}"></td>
+        <td th:text="${item.date}"></td>
+        <td th:text="${item.user}"></td>
+        <td th:text="${item.beginDate}"></td>
+        <td th:text="${item.endDate}"></td>
+        <td th:text="${item.contractPrice}"></td>
+        <td th:text="${item.monthlyFee}"></td>
+        <td th:text="${item.contractType}"></td>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

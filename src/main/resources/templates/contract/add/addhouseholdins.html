@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new household insurance</title>
+</head>
+<body>
+<form th:action="@{/}" th:object="${item}" method="post">
+
+    <label for="contractId">Contract Id</label>
+    <input type="number" id="contractId" th:field="*{contractId}"/>
+    <p th:if="${#fields.hasErrors('contractid')}" th:errors="*{contractId}"></p><br>
+
+    <label for="date">Date</label>
+    <input type="date" id="date" th:field="*{date}"/>
+    <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></p><br>
+
+    <label for="user">User</label>
+    <input type="text" id="user" th:field="*{user}"/>
+    <p th:if="${#fields.hasErrors('user')}" th:errors="*{user}"></p><br>
+
+    <label for="date">Begin Date</label>
+    <input type="date" id="date" th:field="*{date}"/>
+    <p th:if="${#fields.hasErrors('begindate')}" th:errors="*{date}"></p><br>
+
+    <label for="date">End Date</label>
+    <input type="date" id="endDate" th:field="*{date}"/>
+    <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{date}"></p><br>
+
+    <label for="contractPrice">Contract Price</label>
+    <input type="number" id="contractPrice" th:field="*{contractPrice}"/>
+    <p th:if="${#fields.hasErrors('contractPrice')}" th:errors="*{contractPrice}"></p><br>
+
+    <label for="monthlyFee">Monthly Fee</label>
+    <input type="number" id="MonthlyFee" th:field="*{monthlyFee}"/>
+    <p th:if="${#fields.hasErrors('monthlyFee')}" th:errors="*{monthlyFee}"></p><br>
+
+    <label for="estateType">Estate Type</label>
+    <input type="text" id="estateType" th:field="*{estateType}"/>
+    <p th:if="${#fields.hasErrors('estateType')}" th:errors="*{estateType}"></p><br>
+
+    <label for="estateAddress">Estate Address</label>
+    <input type="text" id="estateAddress" th:field="*{estateAddress}"/>
+    <p th:if="${#fields.hasErrors('estateAddress')}" th:errors="*{estateAddress}"></p><br>
+
+    <label for="estatePrice">Estate Price</label>
+    <input type="number" id="estatePrice" th:field="*{estatePrice}"/>
+    <p th:if="${#fields.hasErrors('estatePrice')}" th:errors="*{estatePrice}"></p><br>
+
+    <label for="equipmentPrice">Equipment Price</label>
+    <input type="number" id="equipmentPrice" th:field="*{equipmentPrice}"/>
+    <p th:if="${#fields.hasErrors('equipmentPrice')}" th:errors="*{equipmentPrice}"></p><br>
+
+
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>

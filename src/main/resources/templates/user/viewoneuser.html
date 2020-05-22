@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta charset="UTF-8">
+    <title>User Details</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+          integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+</head>
+<body>
+<table class="pure-table pure-table-bordered">
+    <thead>
+    <tr>
+        <th class="mdl-data-table__cell--non-numeric">Id</th>
+        <th class="mdl-data-table__cell--non-numeric">First Name</th>
+        <th class="mdl-data-table__cell--non-numeric">Last Name</th>
+        <th class="mdl-data-table__cell--non-numeric">Birth Id</th>
+        <th class="mdl-data-table__cell--non-numeric">Email</th>
+
+        <th class="mdl-data-table__cell--non-numeric">Address zip code</th>
+        <th class="mdl-data-table__cell--non-numeric">Address town</th>
+        <th class="mdl-data-table__cell--non-numeric">Address street</th>
+        <th class="mdl-data-table__cell--non-numeric">Address house number</th>
+
+        <th class="mdl-data-table__cell--non-numeric">Correspondence zip code</th>
+        <th class="mdl-data-table__cell--non-numeric">Correspondence town</th>
+        <th class="mdl-data-table__cell--non-numeric">Correspondence street</th>
+        <th class="mdl-data-table__cell--non-numeric">Correspondence house number</th>
+
+
+
+    </tr>
+
+    </thead>
+    <tbody>
+    <tr th:each="item: ${items}">
+
+        <td th:text="${item.getUserId()}"></td>
+        <td th:text="${item.getFirstName()}"></td>
+        <td th:text="${item.getLastName()}"></td>
+        <td th:text="${item.getBirthId()}"></td>
+        <td th:text="${item.getEmail()}"></td>
+
+        <td th:text="${item.getAddrZipCode()}"></td>
+        <td th:text="${item.getAddrTown()}"></td>
+        <td th:text="${item.getAddrStreet()}"></td>
+        <td th:text="${item.getAddrHouseNumber()}"></td>
+
+        <td th:text="${item.getCorrespaddrZipCode()}"></td>
+        <td th:text="${item.getCorrespaddrTown()}"></td>
+        <td th:text="${item.getCorrespaddrStreet()}"></td>
+        <td th:text="${item.getCorrespaddrHouseNumber()}"></td>
+
+    </tr>
+    </tbody>
+</table>
+<p></p>
+<table class="pure-table pure-table-bordered">
+    <thead>
+<tr>
+    <th class="mdl-data-table__cell--non-numeric">Id</th>
+    <th class="mdl-data-table__cell--non-numeric">Date</th>
+    <th class="mdl-data-table__cell--non-numeric">User id</th>
+    <th class="mdl-data-table__cell--non-numeric">contractType</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="cont: ${items.getListOfContracts()}">
+    <td th:text="${cont.contractId}"></td>
+    <td th:text="${cont.date}"></td>
+    <td th:text="${cont.userId}"></td>
+    <td th:text="${cont.contractType}"></td>
+</tr>
+</tbody>
+</table>
+<p>
+    <a class="button" th:href="@{'/edit/' + ${items.getUserId()}}" >Edit user</a>
+    <a class="button" th:href="@{/index}" >All users</a>
+</p>
+
+</body>
+</html>
