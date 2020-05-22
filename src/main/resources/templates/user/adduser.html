@@ -8,54 +8,55 @@
 <form action="#" th:action="@{/adduser}" th:object="${item}" method="post">
 
 
-    <label for="firstName">Fist Name</label>
+    <label for="firstName">Fist Name</label><br>
     <input type="text" id="firstName" th:field="*{firstName}"/>
-    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p><br>
+    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
 
-    <label for="lastName">Last Name</label>
+    <label for="lastName">Last Name</label><br>
     <input type="text" id="lastName" th:field="*{lastName}"/>
-    <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p><br>
+    <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
 
-    <label for="birthId">Birth id</label>
+    <label for="birthId">Birth id</label><br>
     <input type="number" id="birthId" th:field="*{birthId}"/>
-    <p th:if="${#fields.hasErrors('birthId')}" th:errors="*{birthId}"></p><br>
+    <p th:if="${#fields.hasErrors('birthId')}" th:errors="*{birthId}"></p>
 
-    <label for="email">e-mail</label>
+    <label for="email">e-mail</label><br>
     <input type="text" id="email" th:field="*{email}"/>
     <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p><br>
 
-
-    <label for="addrZipCode">address</label>
+    <p><label style="font-style: oblique">Address</label></p>
+    <label for="addrZipCode">Zip Code</label><br>
     <input type="text" id="addrZipCode" th:field="*{addrZipCode}"/>
-    <p th:if="${#fields.hasErrors('addrZipCode')}" th:errors="*{addrZipCode}"></p><br>
+    <p th:if="${#fields.hasErrors('addrZipCode')}" th:errors="*{addrZipCode}"></p>
 
-    <label for="addrTown">address</label>
+    <label for="addrTown">Town</label><br>
     <input type="text" id="addrTown" th:field="*{addrTown}"/>
-    <p th:if="${#fields.hasErrors('addrTown')}" th:errors="*{addrTown}"></p><br>
+    <p th:if="${#fields.hasErrors('addrTown')}" th:errors="*{addrTown}"></p>
 
-    <label for="addrStreet">address</label>
+    <label for="addrStreet">Street</label><br>
     <input type="text" id="addrStreet" th:field="*{addrStreet}"/>
-    <p th:if="${#fields.hasErrors('addrZipCode')}" th:errors="*{addrStreet}"></p><br>
+    <p th:if="${#fields.hasErrors('addrZipCode')}" th:errors="*{addrStreet}"></p>
 
-    <label for="addrHouseNumber">address</label>
+    <label for="addrHouseNumber">House Number</label><br>
     <input type="text" id="addrHouseNumber" th:field="*{addrHouseNumber}"/>
     <p th:if="${#fields.hasErrors('addrHouseNumber')}" th:errors="*{addrHouseNumber}"></p><br>
 
-    <label for="correspaddrZipCode">address</label>
+    <p><label style="font-style: oblique">Correspondence Address</label></p>
+    <label for="correspaddrZipCode">Zip Code</label><br>
     <input type="text" id="correspaddrZipCode" th:field="*{correspaddrZipCode}"/>
-    <p th:if="${#fields.hasErrors('correspaddrZipCode')}" th:errors="*{correspaddrZipCode}"></p><br>
+    <p th:if="${#fields.hasErrors('correspaddrZipCode')}" th:errors="*{correspaddrZipCode}"></p>
 
-    <label for="correspaddrTown">address</label>
+    <label for="correspaddrTown">Town</label><br>
     <input type="text" id="correspaddrTown" th:field="*{correspaddrTown}"/>
-    <p th:if="${#fields.hasErrors('correspaddrTown')}" th:errors="*{correspaddrTown}"></p><br>
+    <p th:if="${#fields.hasErrors('correspaddrTown')}" th:errors="*{correspaddrTown}"></p>
 
-    <label for="correspaddrStreet">address</label>
+    <label for="correspaddrStreet">Street</label><br>
     <input type="text" id="correspaddrStreet" th:field="*{correspaddrStreet}"/>
-    <p th:if="${#fields.hasErrors('correspaddrStreet')}" th:errors="*{correspaddrStreet}"></p><br>
+    <p th:if="${#fields.hasErrors('correspaddrStreet')}" th:errors="*{correspaddrStreet}"></p>
 
-    <label for="correspaddrHouseNumber">address</label>
+    <label for="correspaddrHouseNumber">House Number</label><br>
     <input type="text" id="correspaddrHouseNumber" th:field="*{correspaddrHouseNumber}"/>
-    <p th:if="${#fields.hasErrors('correspaddrHouseNumber')}" th:errors="*{correspaddrHouseNumber}"></p><br>
+    <p th:if="${#fields.hasErrors('correspaddrHouseNumber')}" th:errors="*{correspaddrHouseNumber}"></p>
 
 
 

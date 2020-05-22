@@ -7,37 +7,38 @@
 <body>
 <form th:action="@{/}" th:object="${item}" method="post">
 
-    <label for="date">Begin Date</label>
+    <p><label style="font-style: oblique">Edit Accident Insurance</label></p>
+    <label for="date">Begin Date</label><br>
     <input type="date" id="date" th:field="*{date}"/>
-    <p th:if="${#fields.hasErrors('begindate')}" th:errors="*{date}"></p><br>
+    <p th:if="${#fields.hasErrors('begindate')}" th:errors="*{date}"></p>
 
-    <label for="date">End Date</label>
+    <label for="date">End Date</label><br>
     <input type="date" id="date" th:field="*{date}"/>
-    <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{date}"></p><br>
+    <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{date}"></p>
 
-    <label for="contractPrice">Contract Price</label>
+    <label for="contractPrice">Contract Price</label><br>
     <input type="number" id="contractPrice" th:field="*{contractPrice}"/>
-    <p th:if="${#fields.hasErrors('contractPrice')}" th:errors="*{contractPrice}"></p><br>
+    <p th:if="${#fields.hasErrors('contractPrice')}" th:errors="*{contractPrice}"></p>
 
-    <label for="monthlyFee">Monthly Fee</label>
+    <label for="monthlyFee">Monthly Fee</label><br>
     <input type="number" id="MonthlyFee" th:field="*{monthlyFee}"/>
-    <p th:if="${#fields.hasErrors('monthlyFee')}" th:errors="*{monthlyFee}"></p><br>
+    <p th:if="${#fields.hasErrors('monthlyFee')}" th:errors="*{monthlyFee}"></p>
 
-    <label for="accidentConseq">Accident Consequence</label>
+    <label for="accidentConseq">Accident Consequence</label><br>
     <input type="number" id="accidentConseq" th:field="*{acciderntConseq}"/>
-    <p th:if="${#fields.hasErrors('accidentConseq')}" th:errors="*{accidentConseq}"></p><br>
+    <p th:if="${#fields.hasErrors('accidentConseq')}" th:errors="*{accidentConseq}"></p>
 
-    <label for="death">Death</label>
+    <label for="death">Death</label><br>
     <input type="number" id="death" th:field="*{death}"/>
-    <p th:if="${#fields.hasErrors('death')}" th:errors="*{death}"></p><br>
+    <p th:if="${#fields.hasErrors('death')}" th:errors="*{death}"></p>
 
-    <label for="dailyCompens">Daily Compensation</label>
+    <label for="dailyCompens">Daily Compensation</label><br>
     <input type="number" id="dailyCompens" th:field="*{dailyCompens}"/>
-    <p th:if="${#fields.hasErrors('dailyCompens')}" th:errors="*{dailyCompens}"></p><br>
+    <p th:if="${#fields.hasErrors('dailyCompens')}" th:errors="*{dailyCompens}"></p>
 
-    <label for="territorialVailidity">Territorial Validity</label>
+    <label for="territorialVailidity">Territorial Validity</label><br>
     <input type="text" id="territorialVailidity" th:field="*{territorialValidity}"/>
-    <p th:if="${#fields.hasErrors('territorialValidity')}" th:errors="*{territorialValidity}"></p><br>
+    <p th:if="${#fields.hasErrors('territorialValidity')}" th:errors="*{territorialValidity}"></p>
 
 
     <input type="submit" value="Submit"/>
