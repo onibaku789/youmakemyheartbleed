@@ -8,29 +8,29 @@
 <form th:action="@{/}" th:object="${item}" method="post">
 
     <p><label style="font-style: oblique">Edit Travel Insurance</label></p>
-    <label for="date">Begin Date</label><br>
-    <input type="date" id="date" th:field="*{date}"/>
-    <p th:if="${#fields.hasErrors('begindate')}" th:errors="*{date}"></p>
+    <label for="beginDate">Begin Date</label><br>
+    <input type="beginDate" id="beginDate" th:field="*{beginDate}"/>
+    <p th:if="${#fields.hasErrors('beginDate')}" th:errors="*{beginDate}"></p><br>
 
-    <label for="date">End Date</label><br>
-    <input type="date" id="date" th:field="*{date}"/>
-    <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{date}"></p>
+    <label for="endDate">End Date</label><br>
+    <input type="endDate" id="endDate" th:field="*{endDate}"/>
+    <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></p><br>
 
     <label for="contractPrice">Contract Price</label><br>
     <input type="number" id="contractPrice" th:field="*{contractPrice}"/>
-    <p th:if="${#fields.hasErrors('contractPrice')}" th:errors="*{contractPrice}"></p>
+    <p th:if="${#fields.hasErrors('contractPrice')}" th:errors="*{contractPrice}"></p><br>
 
     <label for="monthlyFee">Monthly Fee</label><br>
-    <input type="number" id="MonthlyFee" th:field="*{monthlyFee}"/>
-    <p th:if="${#fields.hasErrors('monthlyFee')}" th:errors="*{monthlyFee}"></p>
+    <input type="number" id="monthlyFee" th:field="*{monthlyFee}"/>
+    <p th:if="${#fields.hasErrors('monthlyFee')}" th:errors="*{monthlyFee}"></p><br>
 
     <label for="inEU">In Eu</label><br>
     <input type="number" id="inEU" th:field="*{inEU}"/>
-    <p th:if="${#fields.hasErrors('inEU')}" th:errors="*{inEU}"></p>
+    <p th:if="${#fields.hasErrors('inEU')}" th:errors="*{inEU}"></p><br>
 
     <label for="purpose">Purpose</label><br>
     <input type="text" id="purpose" th:field="*{purpose}"/>
-    <p th:if="${#fields.hasErrors('purpose')}" th:errors="*{purpose}"></p>
+    <p th:if="${#fields.hasErrors('purpose')}" th:errors="*{purpose}"></p><br>
 
 
 

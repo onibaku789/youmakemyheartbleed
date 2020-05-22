@@ -14,11 +14,11 @@
 
     <label for="firstName">Fist Name</label><br>
     <input type="text" id="firstName" th:field="*{firstName}"/>
-    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p><br>
 
     <label for="lastName">Last Name</label><br>
     <input type="text" id="lastName" th:field="*{lastName}"/>
-    <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+    <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p><br>
 
 
     <input type="hidden" id="birthId" th:field="*{birthId}"/>
@@ -31,15 +31,15 @@
     <p><label style="font-style: oblique">Address</label></p>
     <label for="addrZipCode">Zip Code</label><br>
     <input type="text" id="addrZipCode" th:field="*{addrZipCode}"/>
-    <p th:if="${#fields.hasErrors('addrZipCode')}" th:errors="*{addrZipCode}"></p>
+    <p th:if="${#fields.hasErrors('addrZipCode')}" th:errors="*{addrZipCode}"></p><br>
 
     <label for="addrTown">Town</label><br>
     <input type="text" id="addrTown" th:field="*{addrTown}"/>
-    <p th:if="${#fields.hasErrors('addrTown')}" th:errors="*{addrTown}"></p>
+    <p th:if="${#fields.hasErrors('addrTown')}" th:errors="*{addrTown}"></p><br>
 
     <label for="addrStreet">Street</label><br>
     <input type="text" id="addrStreet" th:field="*{addrStreet}"/>
-    <p th:if="${#fields.hasErrors('addrZipCode')}" th:errors="*{addrStreet}"></p>
+    <p th:if="${#fields.hasErrors('addrZipCode')}" th:errors="*{addrStreet}"></p><br>
 
     <label for="addrHouseNumber">House Number</label><br>
     <input type="text" id="addrHouseNumber" th:field="*{addrHouseNumber}"/>
@@ -48,19 +48,19 @@
     <p><label style="font-style: oblique">Correspondence Address</label></p>
     <label for="correspaddrZipCode">Zip Code</label><br>
     <input type="text" id="correspaddrZipCode" th:field="*{correspaddrZipCode}"/>
-    <p th:if="${#fields.hasErrors('correspaddrZipCode')}" th:errors="*{correspaddrZipCode}"></p>
+    <p th:if="${#fields.hasErrors('correspaddrZipCode')}" th:errors="*{correspaddrZipCode}"></p><br>
 
     <label for="correspaddrTown">Town</label><br>
     <input type="text" id="correspaddrTown" th:field="*{correspaddrTown}"/>
-    <p th:if="${#fields.hasErrors('correspaddrTown')}" th:errors="*{correspaddrTown}"></p>
+    <p th:if="${#fields.hasErrors('correspaddrTown')}" th:errors="*{correspaddrTown}"></p><br>
 
     <label for="correspaddrStreet">Street</label><br>
     <input type="text" id="correspaddrStreet" th:field="*{correspaddrStreet}"/>
-    <p th:if="${#fields.hasErrors('correspaddrStreet')}" th:errors="*{correspaddrStreet}"></p>
+    <p th:if="${#fields.hasErrors('correspaddrStreet')}" th:errors="*{correspaddrStreet}"></p><br>
 
     <label for="correspaddrHouseNumber">House Number</label><br>
     <input type="text" id="correspaddrHouseNumber" th:field="*{correspaddrHouseNumber}"/>
-    <p th:if="${#fields.hasErrors('correspaddrHouseNumber')}" th:errors="*{correspaddrHouseNumber}"></p>
+    <p th:if="${#fields.hasErrors('correspaddrHouseNumber')}" th:errors="*{correspaddrHouseNumber}"></p><br>
 
 
 

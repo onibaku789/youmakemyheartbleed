@@ -8,37 +8,49 @@
 <form th:action="@{/}" th:object="${item}" method="post">
 
     <p><label style="font-style: oblique">Edit Household Insurance</label></p>
-    <label for="date">Begin Date</label><br>
-    <input type="date" id="date" th:field="*{date}"/>
-    <p th:if="${#fields.hasErrors('begindate')}" th:errors="*{date}"></p>
+    <label for="beginDate">Begin Date</label><br>
+    <input type="beginDate" id="beginDate" th:field="*{beginDate}"/>
+    <p th:if="${#fields.hasErrors('beginDate')}" th:errors="*{beginDate}"></p><br>
 
-    <label for="date">End Date</label><br>
-    <input type="date" id="date" th:field="*{date}"/>
-    <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{date}"></p>
+    <label for="endDate">End Date</label><br>
+    <input type="endDate" id="endDate" th:field="*{endDate}"/>
+    <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></p><br>
 
     <label for="contractPrice">Contract Price</label><br>
     <input type="number" id="contractPrice" th:field="*{contractPrice}"/>
-    <p th:if="${#fields.hasErrors('contractPrice')}" th:errors="*{contractPrice}"></p>
+    <p th:if="${#fields.hasErrors('contractPrice')}" th:errors="*{contractPrice}"></p><br>
 
     <label for="monthlyFee">Monthly Fee</label><br>
-    <input type="number" id="MonthlyFee" th:field="*{monthlyFee}"/>
-    <p th:if="${#fields.hasErrors('monthlyFee')}" th:errors="*{monthlyFee}"></p>
+    <input type="number" id="monthlyFee" th:field="*{monthlyFee}"/>
+    <p th:if="${#fields.hasErrors('monthlyFee')}" th:errors="*{monthlyFee}"></p><br>
 
     <label for="estateType">Estate Type</label><br>
     <input type="text" id="estateType" th:field="*{estateType}"/>
-    <p th:if="${#fields.hasErrors('estateType')}" th:errors="*{estateType}"></p>
+    <p th:if="${#fields.hasErrors('estateType')}" th:errors="*{estateType}"></p><br>
 
-    <label for="estateAddress">Estate Address</label><br>
-    <input type="text" id="estateAddress" th:field="*{estateAddress}"/>
-    <p th:if="${#fields.hasErrors('estateAddress')}" th:errors="*{estateAddress}"></p>
+    <label for="estateAddrZipCode">Estate Addr. Zip Code</label><br>
+    <input type="text" id="estateAddrZipCode" th:field="*{estateAddrZipCode}"/>
+    <p th:if="${#fields.hasErrors('estateAddrZipCode')}" th:errors="*{estateAddrZipCode}"></p><br>
+
+    <label for="estateAddrTown">Estate Addr. Town</label><br>
+    <input type="text" id="estateAddrTown" th:field="*{estateAddrTown}"/>
+    <p th:if="${#fields.hasErrors('estateAddrTown')}" th:errors="*{estateAddrTown}"></p><br>
+
+    <label for="estateAddrStreet">Estate Addr. Street</label><br>
+    <input type="text" id="estateAddrStreet" th:field="*{estateAddrStreet}"/>
+    <p th:if="${#fields.hasErrors('estateAddrStreet')}" th:errors="*{estateAddrStreet}"></p><br>
+
+    <label for="estateAddrHouseNumber">Estate Addr. House Number</label><br>
+    <input type="text" id="estateAddrHouseNumber" th:field="*{estateAddrHouseNumber}"/>
+    <p th:if="${#fields.hasErrors('estateAddrHouseNumber')}" th:errors="*{estateAddrHouseNumber}"></p><br>
 
     <label for="estatePrice">Estate Price</label><br>
     <input type="number" id="estatePrice" th:field="*{estatePrice}"/>
-    <p th:if="${#fields.hasErrors('estatePrice')}" th:errors="*{estatePrice}"></p>
+    <p th:if="${#fields.hasErrors('estatePrice')}" th:errors="*{estatePrice}"></p><br>
 
     <label for="equipmentPrice">Equipment Price</label><br>
     <input type="number" id="equipmentPrice" th:field="*{equipmentPrice}"/>
-    <p th:if="${#fields.hasErrors('equipmentPrice')}" th:errors="*{equipmentPrice}"></p>
+    <p th:if="${#fields.hasErrors('equipmentPrice')}" th:errors="*{equipmentPrice}"></p><br>
 
 
     <input type="submit" value="Submit"/>

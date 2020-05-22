@@ -19,7 +19,10 @@
         <th class="mdl-data-table__cell--non-numeric">Monthly Fee</th>
         <th class="mdl-data-table__cell--non-numeric">Contract Type</th>
         <th class="mdl-data-table__cell--non-numeric">Estate Type</th>
-        <th class="mdl-data-table__cell--non-numeric">Estate Address</th>
+        <th class="mdl-data-table__cell--non-numeric">Estate Addr. Zip Code</th>
+        <th class="mdl-data-table__cell--non-numeric">Estate Addr. Town</th>
+        <th class="mdl-data-table__cell--non-numeric">Estate Addr. Street</th>
+        <th class="mdl-data-table__cell--non-numeric">Estate Addr. House Number</th>
         <th class="mdl-data-table__cell--non-numeric">Estate Price</th>
         <th class="mdl-data-table__cell--non-numeric">Garage</th>
     </tr>
@@ -35,7 +38,10 @@
         <td th:text="${item.monthlyFee}"></td>
         <td th:text="${item.contractType}"></td>
         <td th:text="${item.estateType}"></td>
-        <td th:text="${item.estateAddress}"></td>
+        <td th:text="${item.estateAddrZipCode}"></td>
+        <td th:text="${item.estateAddrTown}"></td>
+        <td th:text="${item.estateAddrStreet}"></td>
+        <td th:text="${item.estateAddrHouseNumber}"></td>
         <td th:text="${item.estatePrice}"></td>
         <td th:text="${item.garage}"></td>
     </tr>

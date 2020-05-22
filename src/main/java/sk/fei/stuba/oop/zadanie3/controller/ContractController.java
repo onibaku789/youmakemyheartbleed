@@ -74,6 +74,48 @@ public class ContractController {
         }
     }
 
+    @PostMapping("/contracts/addACC")
+    public String submitAccContract(@ModelAttribute("item") AccidentInsurance item, Model model) {
+        LOGGER.warn("submitContract " + item.toString());
+        try {
+            //TODO UPDATE USER CONTRACT LIST
+            item.setContractId(UUID.randomUUID().toString());
+            contractService.addNewContract(item);
+            return "redirect:/contracts/details/" + item.getContractId();
+        } catch (IllegalArgumentException ex) {
+            System.err.println("SUBMIT CONTRACT ERROR");
+            return "error";
+        }
+    }
+
+    @PostMapping("/contracts/addTRAV")
+    public String submitTravContract(@ModelAttribute("item") TravelInsurance item, Model model) {
+        LOGGER.warn("submitContract " + item.toString());
+        try {
+            //TODO UPDATE USER CONTRACT LIST
+            item.setContractId(UUID.randomUUID().toString());
+            contractService.addNewContract(item);
+            return "redirect:/contracts/details/" + item.getContractId();
+        } catch (IllegalArgumentException ex) {
+            System.err.println("SUBMIT CONTRACT ERROR");
+            return "error";
+        }
+    }
+
+    @PostMapping("/contracts/addHOU")
+    public String submitHouContract(@ModelAttribute("item") HouseholdInsurance item, Model model) {
+        LOGGER.warn("submitContract " + item.toString());
+        try {
+            //TODO UPDATE USER CONTRACT LIST
+            item.setContractId(UUID.randomUUID().toString());
+            contractService.addNewContract(item);
+            return "redirect:/contracts/details/" + item.getContractId();
+        } catch (IllegalArgumentException ex) {
+            System.err.println("SUBMIT CONTRACT ERROR");
+            return "error";
+        }
+    }
+
     @GetMapping("/contracts/details/{id}")
     public String detailedContract(@PathVariable UUID contractId, Model model) {
         //TODO
