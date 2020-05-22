@@ -1,4 +1,4 @@
-package sk.fei.stuba.oop.zadanie3.view;
+package sk.fei.stuba.oop.zadanie3.controller;
 
 
 import org.slf4j.Logger;
@@ -30,7 +30,7 @@ public class UserController {
 
     @PostMapping("/adduser")
     public String submit(@ModelAttribute("item") User item, Model model) {
-        LOGGER.warn("submit" + item.toString());
+        LOGGER.warn("submit " + item.toString());
         try {
             userService.addNewUser(item);
             return "redirect:/index";
@@ -38,27 +38,26 @@ public class UserController {
             System.err.println("SUBMIT ERROR");
             return "error";
         }
-
     }
 
     @GetMapping("edit/{id}")
     public String edit(@PathVariable("id") UUID id, Model model) {
         User user  = userService.getUserById(id);
-        LOGGER.warn("edit" + user.toString());
+        LOGGER.warn("edit " + user.toString());
         model.addAttribute("item",user);
         return "user/edituser";
     }
     @GetMapping("details/{id}")
     public String details(@PathVariable("id") UUID id, Model model) {
         User user  = userService.getUserById(id);
-        LOGGER.warn("details" + user.toString());
+        LOGGER.warn("details " + user.toString());
         model.addAttribute("items",user);
         return "user/viewoneuser";
     }
 
     @PostMapping("/edit")
     public String update(@ModelAttribute("item") User item, Model model) {
-        LOGGER.warn("Update" + item.toString());
+        LOGGER.warn("Update " + item.toString());
         try {
             userService.editUser(item);
             model.addAttribute("items", item);
