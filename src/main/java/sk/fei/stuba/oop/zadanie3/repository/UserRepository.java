@@ -5,20 +5,19 @@ import org.springframework.stereotype.Service;
 import sk.fei.stuba.oop.zadanie3.model.user.User;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class UserRepository {
 
-    private Map<UUID,User> allUser;
+    private Map<String, User> allUser;
     private User dummy;
 
 
     public UserRepository() {
-        allUser = new HashMap<>();
+        allUser = new HashMap<String, User>();
     }
 
-    public User getUserById(UUID userId) {
+    public User getUserById(String userId) {
         return new User(allUser.get(userId));
     }
 
@@ -30,7 +29,7 @@ public class UserRepository {
         return new ArrayList<>(allUser.values());
     }
 
-    public boolean checkIfUserIdExists(UUID userId) {
+    public boolean checkIfUserIdExists(String userId) {
         return allUser.containsKey(userId);
     }
 

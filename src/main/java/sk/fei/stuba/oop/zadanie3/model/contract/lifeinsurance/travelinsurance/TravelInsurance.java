@@ -6,18 +6,21 @@ import sk.fei.stuba.oop.zadanie3.model.contract.ContractType;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class TravelInsurance extends Contract {
 
     private boolean inEU;
     private PurposeOfTrip purpose;
 
-    public TravelInsurance(Long contractId, LocalDate date, UUID userId, LocalDate beginDate, LocalDate endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType,
+    public TravelInsurance(String contractId, LocalDate date, String userId, LocalDate beginDate, LocalDate endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType,
                            boolean inEU, PurposeOfTrip purpose) {
         super(contractId, date, userId, beginDate, endDate, contractPrice, monthlyFee, contractType);
         this.inEU = inEU;
         this.purpose = purpose;
+    }
+
+    public TravelInsurance() {
+
     }
 
     public boolean isInEU() {

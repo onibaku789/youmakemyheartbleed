@@ -8,23 +8,23 @@
 <form th:action="@{/}" th:object="${item}" method="post">
 
     <label for="contractId">Contract Id</label><br>
-    <input type="number" id="contractId" th:field="*{contractId}"/>
-    <p th:if="${#fields.hasErrors('contractid')}" th:errors="*{contractId}"></p>
+    <input type="text" id="contractId" th:field="*{contractId}"/>
+    <p th:if="${#fields.hasErrors('contractId')}" th:errors="*{contractId}"></p>
 
     <label for="date">Date</label><br>
     <input type="date" id="date" th:field="*{date}"/>
     <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></p>
 
     <label for="user">User</label><br>
-    <input type="text" id="user" th:field="*{user}"/>
-    <p th:if="${#fields.hasErrors('user')}" th:errors="*{user}"></p>
+    <input type="text" id="user" th:field="*{userId}"/>
+    <p th:if="${#fields.hasErrors('user')}" th:errors="*{userId}"></p>
 
-    <label for="date">Begin Date</label><br>
-    <input type="date" id="date" th:field="*{date}"/>
+    <label for="BeginDate">Begin Date</label><br>
+    <input type="date" id="BeginDate" th:field="*{date}"/>
     <p th:if="${#fields.hasErrors('begindate')}" th:errors="*{date}"></p>
 
-    <label for="date">End Date</label><br>
-    <input type="date" id="date" th:field="*{date}"/>
+    <label for="EndDate">End Date</label><br>
+    <input type="date" id="EndDate" th:field="*{date}"/>
     <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{date}"></p>
 
     <label for="contractPrice">Contract Price</label><br>
@@ -40,7 +40,7 @@
     <p th:if="${#fields.hasErrors('inEU')}" th:errors="*{inEU}"></p>
 
     <label for="purpose">Purpose</label><br>
-    <input type="text" id="purpose" th:field="*{purpose}"/>
+    <input type="text" id="purpose" th:field="*{}"/>
     <p th:if="${#fields.hasErrors('purpose')}" th:errors="*{purpose}"></p>
 
 

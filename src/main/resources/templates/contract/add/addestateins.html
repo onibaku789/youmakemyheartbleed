@@ -5,27 +5,27 @@
     <title>Add new estate insurance</title>
 </head>
 <body>
-<form th:action="@{/}" th:object="${item}" method="post">
+<form th:action="@{/contracts/addEST}" th:object="${item}" method="post">
 
-    <label for="contractId">Contract Id</label><br>
-    <input type="number" id="contractId" th:field="*{contractId}"/>
-    <p th:if="${#fields.hasErrors('contractid')}" th:errors="*{contractId}"></p>
+ <!--   <label for="contractId">Contract Id</label><br> -->
+    <input type="hidden" id="contractId" th:field="*{contractId}"/>
+    <p th:if="${#fields.hasErrors('contractId')}" th:errors="*{contractId}"></p>
 
     <label for="date">Date</label><br>
-    <input type="date" id="Date" th:field="*{date}"/>
+    <input type="date" id="date" th:field="*{date}"/>
     <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></p>
 
-    <label for="user">User</label><br>
-    <input type="text" id="user" th:field="*{user}"/>
-    <p th:if="${#fields.hasErrors('user')}" th:errors="*{user}"></p>
+    <label for="userId">User</label><br>
+    <input type="text" id="userId" th:field="*{userId}"/>
+    <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></p>
 
-    <label for="date">Begin Date</label><br>
-    <input type="date" id="date" th:field="*{date}"/>
-    <p th:if="${#fields.hasErrors('begindate')}" th:errors="*{date}"></p>
+    <label for="beginDate">Begin Date</label><br>
+    <input type="date" id="beginDate" th:field="*{beginDate}"/>
+    <p th:if="${#fields.hasErrors('beginDate')}" th:errors="*{beginDate}"></p>
 
-    <label for="date">End Date</label><br>
-    <input type="date" id="date" th:field="*{date}"/>
-    <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{date}"></p>
+    <label for="endDate">End Date</label><br>
+    <input type="date" id="endDate" th:field="*{endDate}"/>
+    <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></p>
 
     <label for="contractPrice">Contract Price</label><br>
     <input type="number" id="contractPrice" th:field="*{contractPrice}"/>
@@ -39,17 +39,10 @@
     <input type="text" id="estateType" th:field="*{estateType}"/>
     <p th:if="${#fields.hasErrors('estateType')}" th:errors="*{estateType}"></p>
 
-    <label for="estateAddress">Estate Address</label><br>
-    <input type="text" id="estateAddress" th:field="*{estateAddress}"/>
-    <p th:if="${#fields.hasErrors('estateAddress')}" th:errors="*{estateAddress}"></p>
-
     <label for="estatePrice">Estate Price</label><br>
     <input type="number" id="estatePrice" th:field="*{estatePrice}"/>
     <p th:if="${#fields.hasErrors('estatePrice')}" th:errors="*{estatePrice}"></p>
 
-    <label for="garage">Garage</label><br>
-    <input type="number" id="garage" th:field="*{garage}"/>
-    <p th:if="${#fields.hasErrors('garage')}" th:errors="*{garage}"></p>
 
 
     <input type="submit" value="Submit"/>

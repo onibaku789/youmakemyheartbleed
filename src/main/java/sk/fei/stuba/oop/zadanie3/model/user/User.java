@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public class User  {
 
-    private UUID userId;
+    private String userId;
     private String firstName;
     private String lastName;
     private int birthId;
@@ -31,7 +31,7 @@ public class User  {
         listOfContracts = new ArrayList<>();
     }
 
-    public User(UUID userId, String firstName, String lastName, int birthId, String email, String addrZipCode, String addrTown, String addrStreet, String addrHouseNumber, String correspaddrZipCode,
+    public User(String userId, String firstName, String lastName, int birthId, String email, String addrZipCode, String addrTown, String addrStreet, String addrHouseNumber, String correspaddrZipCode,
                 String correspaddrTown, String correspaddrStreet, String correspaddrHouseNumber) {
         this.userId = userId;
         this.firstName = firstName;
@@ -66,11 +66,11 @@ public class User  {
     }
 
 
-    public UUID getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(UUID userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

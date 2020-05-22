@@ -8,21 +8,19 @@ import sk.fei.stuba.oop.zadanie3.model.contract.lifeinsurance.travelinsurance.Tr
 import sk.fei.stuba.oop.zadanie3.model.contract.nonlifeinsurance.estateinsurance.EstateInsurance;
 import sk.fei.stuba.oop.zadanie3.model.contract.nonlifeinsurance.householdinsurance.HouseholdInsurance;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class ContractRepository {
-    private List<Contract> allContracts;
+    private Map<String, Contract> allContracts;
 
     public ContractRepository() {
-        this.allContracts = new ArrayList<>();
+        this.allContracts = new HashMap<>();
     }
 
-    public List<Contract> getContractByUserId(UUID id) {
+    public List<Contract> getContractByUserId(String id) {
         List<Contract> userContractList = new ArrayList<>();
-        for (Contract contract : allContracts) {
+        for (Contract contract : allContracts.values()) {
             if (contract.getUserId().equals(id)) {
                 userContractList.add(contract);
             }
@@ -30,32 +28,20 @@ public class ContractRepository {
         return userContractList;
     }
 
-    public Contract getContractByContractId(Long id){
-        for (Contract contract : allContracts) {
-            if (contract.getContractId().equals(id)) {
-                return contract;
-            }
-        }
-        //return null;
-        throw new IllegalArgumentException("This contract ID does not exists");
+    public Contract getContractByContractId(UUID id){
+        return allContracts.getOrDefault(id,null);
     }
 
-    public boolean checkIfContractIdExists(Long contractId) {
-        for (Contract contract : allContracts) {
-            if (contract.getContractId().equals(contractId)) {
-                return true;
-            }
-        }
-        return false;
+    public boolean checkIfContractIdExists(UUID contractId) {
+        return allContracts.containsKey(contractId);
     }
 
     public void addContract(Contract newContract) {
-        allContracts.add(newContract);
+        allContracts.put(newContract.getContractId(),newContract);
     }
 
     public Contract editContract(Contract editedContract) {
-        Contract tempContract = getContractId(editedContract.getContractId());
-        allContracts.remove(editedContract);
+        Contract tempContract = allContracts.get(editedContract.getContractId());
         editContract(editedContract, tempContract);
         switch (tempContract.getContractType()) {
             case ACCIDENT:
@@ -71,16 +57,12 @@ public class ContractRepository {
                 editHouseholdInsurance(editedContract, tempContract);
                 break;
         }
-        allContracts.add(tempContract);
+        allContracts.replace(editedContract.getContractId(),tempContract);
         return tempContract;
     }
 
     public List<Contract> getAllContracts() {
-        return new ArrayList<>(allContracts);
-    }
-
-    public void setAllContracts(List<Contract> allContracts) {
-        this.allContracts = allContracts;
+        return new ArrayList<>(allContracts.values());
     }
 
     private void editEstateInsurance(Contract editedContract, Contract tempContract) {
@@ -129,16 +111,6 @@ public class ContractRepository {
         tempContract.setEndDate(editedContract.getEndDate());
         tempContract.setContractPrice(editedContract.getContractPrice());
         tempContract.setMonthlyFee(editedContract.getMonthlyFee());
-    }
-
-    private Contract getContractId(Long contractId) {
-        Contract tempContract = null;
-        for (Contract contract : allContracts) {
-            if (contract.getContractId().equals(contractId)) {
-                tempContract = contract;
-            }
-        }
-        return tempContract;
     }
 }
 

@@ -1,12 +1,11 @@
 package sk.fei.stuba.oop.zadanie3.model.contract;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.UUID;
 
 public abstract class Contract {
-    private Long contractId;
+    private String contractId;
     private LocalDate date;
-    private UUID userId;
+    private String userId;
     private LocalDate beginDate;
     private LocalDate endDate;
     private BigDecimal contractPrice;
@@ -17,8 +16,8 @@ public abstract class Contract {
     public Contract() {
     }
 
-    public Contract(Long contractId, LocalDate date, UUID userId, LocalDate beginDate, LocalDate endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType) {
-        setContractId(contractId);
+    public Contract(String contractId, LocalDate date, String userId, LocalDate beginDate, LocalDate endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType) {
+       this.contractId = contractId;
         setDate(date);
         this.userId = userId;
         this.beginDate = beginDate;
@@ -28,13 +27,11 @@ public abstract class Contract {
         this.contractType = contractType;
     }
 
-    public Long getContractId() {
+    public String getContractId() {
         return contractId;
     }
 
-    private void setContractId(Long contractId) {
-        if (contractId <= 0)
-            throw new IllegalArgumentException("You have to specify contract ID.");
+    public void setContractId(String contractId) {
         this.contractId = contractId;
     }
 
@@ -48,13 +45,11 @@ public abstract class Contract {
         this.date = date;
     }
 
-    public UUID getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    private void setUserId(UUID userId) {
-        if (userId == null)
-            throw new IllegalArgumentException("You have to specify contracts userID.");
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

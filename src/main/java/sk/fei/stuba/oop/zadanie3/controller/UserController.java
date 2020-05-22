@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import sk.fei.stuba.oop.zadanie3.model.user.User;
 import sk.fei.stuba.oop.zadanie3.service.UserService;
 
-import java.util.UUID;
-
 @Controller
 public class UserController {
     private final UserService userService;
@@ -41,14 +39,14 @@ public class UserController {
     }
 
     @GetMapping("edit/{id}")
-    public String edit(@PathVariable("id") UUID id, Model model) {
+    public String edit(@PathVariable("id") String id, Model model) {
         User user  = userService.getUserById(id);
         LOGGER.warn("edit " + user.toString());
         model.addAttribute("item",user);
         return "user/edituser";
     }
     @GetMapping("details/{id}")
-    public String details(@PathVariable("id") UUID id, Model model) {
+    public String details(@PathVariable("id") String id, Model model) {
         User user  = userService.getUserById(id);
         LOGGER.warn("details " + user.toString());
         model.addAttribute("items",user);

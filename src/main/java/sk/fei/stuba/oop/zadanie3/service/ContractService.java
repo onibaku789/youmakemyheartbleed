@@ -25,7 +25,7 @@ public class ContractService {
         return contractRepository.getAllContracts();
     }
 
-    public List<Contract> getContractsByUserId(UUID userId) {
+    public List<Contract> getContractsByUserId(String userId) {
         return contractRepository.getContractByUserId(userId);
     }
 
@@ -42,7 +42,8 @@ public class ContractService {
         // edit contract by contract id
         User user = userRepository.getUserById(contract.getUserId());
         List<Contract> userContractList = user.getListOfContracts();
-        List<Contract> editedUserContractList = userContractList.stream().filter(contract1 -> !contract1.getContractId().equals(contract.getContractId())).collect(Collectors.toList());
+        List<Contract> editedUserContractList = userContractList.stream().filter(contract1 ->
+                !contract1.getContractId().equals(contract.getContractId())).collect(Collectors.toList());
         Contract editedContract = contractRepository.editContract(contract);
         editedUserContractList.add(editedContract);
         user.setListOfContracts(editedUserContractList);
@@ -50,12 +51,13 @@ public class ContractService {
         return editedContract;
     }
 
-    public Contract getContractByContractId(Long id){
+    public Contract getContractByContractId(UUID id){
         return contractRepository.getContractByContractId(id);
     }
 
     private void checkIfContractIsValid(Contract contract) {
-        if (contract == null || contract.getContractId() <= 0 || contract.getUserId() == null) {
+        if (contract == null || contract.getUserId() == null) {
+            System.out.println(contract);
             throw new IllegalArgumentException("Not valid contract, cant be added.");
         }
     }

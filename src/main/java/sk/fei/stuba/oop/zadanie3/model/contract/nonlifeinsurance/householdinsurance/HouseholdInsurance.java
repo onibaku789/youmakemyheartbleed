@@ -8,7 +8,6 @@ import sk.fei.stuba.oop.zadanie3.model.contract.nonlifeinsurance.EstateType;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class HouseholdInsurance extends Contract {
     private EstateType estateType;
@@ -20,7 +19,7 @@ public class HouseholdInsurance extends Contract {
     private BigDecimal equipmentPrice; //zariadenia
 
 
-    public HouseholdInsurance(Long contractId, LocalDate date, UUID userId,
+    public HouseholdInsurance(String contractId, LocalDate date, String userId,
                               LocalDate beginDate, LocalDate endDate,
                               BigDecimal contractPrice, BigDecimal monthlyFee,
                               ContractType contractType, EstateType estateType,
@@ -37,6 +36,10 @@ public class HouseholdInsurance extends Contract {
         this.equipmentPrice = equipmentPrice;
     }
 
+    public HouseholdInsurance() {
+
+    }
+
     public EstateType getEstateType() {
         return estateType;
     }
@@ -44,7 +47,6 @@ public class HouseholdInsurance extends Contract {
     public void setEstateType(EstateType estateType) {
         this.estateType = estateType;
     }
-
 
 
     public BigDecimal getEstatePrice() {

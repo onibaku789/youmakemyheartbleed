@@ -23,7 +23,7 @@ public class UserService {
     }
 
 
-    public User getUserById(UUID userId) {
+    public User getUserById(String userId) {
         try {
             checkIfUserIdExists(userId);
             return userRepository.getUserById(userId);
@@ -34,9 +34,9 @@ public class UserService {
     }
 
     public void addNewUser(User user) {
-        user.setUserId(UUID.randomUUID());
         try {
             checkIfUserIsValid(user);
+            user.setUserId(UUID.randomUUID().toString());
             userRepository.addUser(user);
         } catch (IllegalArgumentException ex) {
             System.err.println(ex.getMessage());
@@ -48,14 +48,14 @@ public class UserService {
         userRepository.editUser(user);
     }
 
-    private void checkIfUserIdExists(UUID userId) {
+    private void checkIfUserIdExists(String userId) {
         if (!userRepository.checkIfUserIdExists(userId)) {
             throw new IllegalArgumentException("User not in database");
         }
     }
 
     private void checkIfUserIsValid(User user) {
-        if (user == null || user.getUserId() == null || user.getFirstName() == null ||
+        if (user == null  || user.getFirstName() == null ||
                 user.getLastName() == null || user.getBirthId() <= 0 ||
                 user.getEmail() == null) {
             throw new IllegalArgumentException("Not valid user, cant be added.");

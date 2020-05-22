@@ -7,9 +7,9 @@ import sk.fei.stuba.oop.zadanie3.model.contract.nonlifeinsurance.EstateType;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class EstateInsurance extends Contract {
+
 
     private EstateType estateType;
     private String estateAddrZipCode;
@@ -19,7 +19,11 @@ public class EstateInsurance extends Contract {
     private BigDecimal estatePrice; // nehnutelnosti
     private boolean garage;  // pripoistenie garaze
 
-    public EstateInsurance(Long contractId, LocalDate date, UUID userId, LocalDate beginDate, LocalDate endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType, EstateType estateType, String estateAddrZipCode, String estateAddrTown, String estateAddrStreet, String estateAddrHouseNumber, BigDecimal estatePrice, boolean garage) {
+    public EstateInsurance() {
+        super();
+    }
+
+    public EstateInsurance(String contractId, LocalDate date, String userId, LocalDate beginDate, LocalDate endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType, EstateType estateType, String estateAddrZipCode, String estateAddrTown, String estateAddrStreet, String estateAddrHouseNumber, BigDecimal estatePrice, boolean garage) {
         super(contractId, date, userId, beginDate, endDate, contractPrice, monthlyFee, contractType);
         this.estateType = estateType;
         this.estateAddrZipCode = estateAddrZipCode;
@@ -29,6 +33,7 @@ public class EstateInsurance extends Contract {
         this.estatePrice = estatePrice;
         this.garage = garage;
     }
+
 
 
     public EstateType getEstateType() {
@@ -89,7 +94,7 @@ public class EstateInsurance extends Contract {
 
     @Override
     public String toString() {
-        return "EstateInsurance{" +
+        return super.toString() + "EstateInsurance{" +
                 "estateType=" + estateType +
                 ", estateAddrZipCode='" + estateAddrZipCode + '\'' +
                 ", estateAddrTown='" + estateAddrTown + '\'' +

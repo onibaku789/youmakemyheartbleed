@@ -5,7 +5,6 @@ import sk.fei.stuba.oop.zadanie3.model.contract.ContractType;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class AccidentInsurance extends Contract {
     private int accidentConseq;
@@ -14,13 +13,17 @@ public class AccidentInsurance extends Contract {
     private TerritorialValidity territorialValidity;
 
 
-    public AccidentInsurance(Long contractId, LocalDate date, UUID userId, LocalDate beginDate, LocalDate endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType,
+    public AccidentInsurance(String contractId, LocalDate date, String userId, LocalDate beginDate, LocalDate endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType,
                              int accidentConseq, int death, int dailycompens, TerritorialValidity territorialValidity) {
         super(contractId, date, userId, beginDate, endDate, contractPrice, monthlyFee, contractType);
         this.accidentConseq = accidentConseq;
         this.death = death;
         this.dailycompens = dailycompens;
         this.territorialValidity = territorialValidity;
+    }
+
+    public AccidentInsurance() {
+
     }
 
     public int getAccidentConseq() {
