@@ -43,6 +43,7 @@ public class ContractController {
     public String addContract(Model model, @PathVariable String contractType) {
         switch (ContractType.valueOf(contractType)) {
             case ESTATE:
+                System.out.println("\n\nIDE BEJOTT\n\n");
                 model.addAttribute("item", new EstateInsurance());
                 return "contract/add/addestateins";
             case TRAVEL:
@@ -60,6 +61,7 @@ public class ContractController {
         }
     }
 
+
     @PostMapping("/contracts/addEST")
     public String submitEstContract(@ModelAttribute("item") EstateInsurance item, Model model) {
         LOGGER.warn("submitContract " + item.toString());
@@ -74,7 +76,7 @@ public class ContractController {
         }
     }
 
-    @PostMapping("/contracts/addACC")
+    @PostMapping("/contracts/addACCIDENT")
     public String submitAccContract(@ModelAttribute("item") AccidentInsurance item, Model model) {
         LOGGER.warn("submitContract " + item.toString());
         try {
@@ -88,8 +90,8 @@ public class ContractController {
         }
     }
 
-    @PostMapping("/contracts/addTRAV")
-    public String submitTravContract(@ModelAttribute("item") TravelInsurance item, Model model) {
+    @PostMapping("/contracts/addTRAVEL")
+    public String submitTraContract(@ModelAttribute("item") TravelInsurance item, Model model) {
         LOGGER.warn("submitContract " + item.toString());
         try {
             //TODO UPDATE USER CONTRACT LIST
@@ -102,7 +104,7 @@ public class ContractController {
         }
     }
 
-    @PostMapping("/contracts/addHOU")
+    @PostMapping("/contracts/addHOUSEHOLD")
     public String submitHouContract(@ModelAttribute("item") HouseholdInsurance item, Model model) {
         LOGGER.warn("submitContract " + item.toString());
         try {

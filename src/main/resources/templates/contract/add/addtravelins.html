@@ -5,7 +5,7 @@
     <title>Add new travel insurance</title>
 </head>
 <body>
-<form th:action="@{/contracts/addTRAV}" th:object="${item}" method="post">
+<form th:action="@{/contracts/addTRAVEL}" th:object="${item}" method="post">
 
     <!--<label for="contractId">Contract Id</label>-->
     <input type="hidden" id="contractId" th:field="*{contractId}"/>
@@ -36,7 +36,7 @@
     <p th:if="${#fields.hasErrors('monthlyFee')}" th:errors="*{monthlyFee}"></p><br>
 
     <label for="inEU">In Eu</label><br>
-    <input type="number" id="inEU" th:field="*{inEU}"/>
+    <input type="checkbox" id="inEU" th:field="*{inEU}"/>
     <p th:if="${#fields.hasErrors('inEU')}" th:errors="*{inEU}"></p><br>
 
     <label for="purpose">Purpose</label><br>
@@ -45,7 +45,7 @@
 
 
 
-    <input type="submit" value="Submit"/>
+    <p> <input type="submit" value="Submit"/></p>
 </form>
 </body>
 </html>
