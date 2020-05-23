@@ -1,6 +1,6 @@
 package sk.fei.stuba.oop.zadanie3.model.contract;
+
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public abstract class Contract {
@@ -19,7 +19,7 @@ public abstract class Contract {
     }
 
     public Contract(String contractId, LocalDateTime date, String userId, LocalDateTime beginDate, LocalDateTime endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType) {
-       this.contractId = contractId;
+        this.contractId = contractId;
         setDate(date);
         this.userId = userId;
         this.beginDate = beginDate;

@@ -28,10 +28,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="item: ${items}">
+    <tr th:each="item: ${contract}">
         <td th:text="${item.contractId}"></td>
         <td th:text="${item.date}"></td>
-        <td th:text="${item.user}"></td>
+        <td th:text="${item.userId}"></td>
         <td th:text="${item.beginDate}"></td>
         <td th:text="${item.endDate}"></td>
         <td th:text="${item.contractPrice}"></td>

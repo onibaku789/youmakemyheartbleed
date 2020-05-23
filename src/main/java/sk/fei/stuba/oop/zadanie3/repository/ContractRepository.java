@@ -28,7 +28,7 @@ public class ContractRepository {
         return userContractList;
     }
 
-    public Contract getContractByContractId(UUID id){
+    public Contract getContractByContractId(String id){
         return allContracts.getOrDefault(id,null);
     }
 

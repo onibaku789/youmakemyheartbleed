@@ -1,6 +1,7 @@
 package sk.fei.stuba.oop.zadanie3.controller;
 
-import org.jetbrains.annotations.NotNull;
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import sk.fei.stuba.oop.zadanie3.model.contract.lifeinsurance.accidentinsurance.
 import sk.fei.stuba.oop.zadanie3.model.contract.lifeinsurance.travelinsurance.TravelInsurance;
 import sk.fei.stuba.oop.zadanie3.model.contract.nonlifeinsurance.estateinsurance.EstateInsurance;
 import sk.fei.stuba.oop.zadanie3.model.contract.nonlifeinsurance.householdinsurance.HouseholdInsurance;
+import sk.fei.stuba.oop.zadanie3.model.user.User;
 import sk.fei.stuba.oop.zadanie3.service.ContractService;
 
 import java.util.UUID;
@@ -29,8 +31,8 @@ public class ContractController {
     }
 
     //TODO
-    @GetMapping("/contracts/edit/{id}")
-    public String editContract(@PathVariable UUID contractId, Model model) {
+    @GetMapping("/contracts/edit/{contractId}")
+    public String editContract(@PathVariable String contractId, Model model) {
         Contract contract = contractService.getContractByContractId(contractId);
         LOGGER.warn("edit "+ contract.toString());
         model.addAttribute("item",contract);
@@ -40,7 +42,6 @@ public class ContractController {
     //TODO
     @PostMapping("/contracts/edit")
     public String updateContract(Contract item, Model model) {
-
         LOGGER.warn("Update " + item.toString());
         try{
             contractService.editContract(item);
@@ -71,18 +72,19 @@ public class ContractController {
                 return "contract/add/addhouseholdins";
             default:
                 throw new IllegalArgumentException("Invalid ContractType chosen.");
-
         }
     }
 
     //TODO
     @PostMapping("/contracts/addEST")
-    public String submitEstContract(@ModelAttribute("item") EstateInsurance item, Model model) {
+    public String submitEstContract(@ModelAttribute("item") EstateInsurance item, @ModelAttribute("items") User user, Model model) {
         LOGGER.warn("submitContract " + item.toString());
+        LOGGER.warn(model.toString());
         try {
             //TODO UPDATE USER CONTRACT LIST
             item.setContractId(UUID.randomUUID().toString());
             contractService.addNewContract(item);
+            LOGGER.warn(item.toString());
             return "redirect:/contracts/details/" + item.getContractId();
             //return "user/viewoneuser/";
         } catch (IllegalArgumentException ex) {
@@ -133,10 +135,11 @@ public class ContractController {
         }
     }
 
-    @GetMapping("/contracts/details/{id}")
-    public String detailedContract(@PathVariable UUID contractId, Model model) {
+    @GetMapping("/contracts/details/{contractId}")
+    public String detailedContract(@PathVariable String contractId, Model model) {
         //TODO
-        return "";
+        model.addAttribute("contract",contractService.getContractByContractId(contractId));
+        return "contract/view/viewestateins";
     }
 
 

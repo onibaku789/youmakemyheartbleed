@@ -51,7 +51,7 @@ public class ContractService {
         return editedContract;
     }
 
-    public Contract getContractByContractId(UUID id){
+    public Contract getContractByContractId(String id){
         return contractRepository.getContractByContractId(id);
     }
 

@@ -21,7 +21,7 @@
     <p th:if="${#fields.hasErrors('birthId')}" th:errors="*{birthId}"></p><br>
 
     <label for="email">e-mail</label><br>
-    <input type="text" id="email" th:field="*{email}"/>
+    <input type="email" id="email" th:field="*{email}"/>
     <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p><br>
 
     <p><label style="font-style: oblique">Address</label></p>
