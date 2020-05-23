@@ -9,11 +9,11 @@
 
     <p><label style="font-style: oblique">Edit Household Insurance</label></p>
     <label for="beginDate">Begin Date</label><br>
-    <input type="beginDate" id="beginDate" th:field="*{beginDate}"/>
+    <input type="datetime-local" id="beginDate" th:field="*{beginDate}"/>
     <p th:if="${#fields.hasErrors('beginDate')}" th:errors="*{beginDate}"></p><br>
 
     <label for="endDate">End Date</label><br>
-    <input type="endDate" id="endDate" th:field="*{endDate}"/>
+    <input type="datetime-local" id="endDate" th:field="*{endDate}"/>
     <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></p><br>
 
     <label for="contractPrice">Contract Price</label><br>

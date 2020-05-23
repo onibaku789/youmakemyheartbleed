@@ -8,6 +8,7 @@ import sk.fei.stuba.oop.zadanie3.model.contract.nonlifeinsurance.EstateType;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class HouseholdInsurance extends Contract {
     private EstateType estateType;
@@ -20,8 +21,8 @@ public class HouseholdInsurance extends Contract {
 
     public HouseholdInsurance() { super(); }
 
-    public HouseholdInsurance(String contractId, LocalDate date, String userId,
-                              LocalDate beginDate, LocalDate endDate,
+    public HouseholdInsurance(String contractId, LocalDateTime date, String userId,
+                              LocalDateTime beginDate, LocalDateTime endDate,
                               BigDecimal contractPrice, BigDecimal monthlyFee,
                               ContractType contractType, EstateType estateType,
                               String estateAddrZipCode, String estateAddrTown,

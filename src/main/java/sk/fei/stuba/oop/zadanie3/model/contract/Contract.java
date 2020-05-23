@@ -1,14 +1,15 @@
 package sk.fei.stuba.oop.zadanie3.model.contract;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public abstract class Contract {
     private String contractId;
-    private LocalDate date; // needed LocalDateTime ??
+    private LocalDateTime date; // needed LocalDateTime ??
     private String userId;// INSURER - employee ID
     //private String insured; // INSURED - customer ID
-    private LocalDate beginDate;
-    private LocalDate endDate;
+    private LocalDateTime beginDate;
+    private LocalDateTime endDate;
     private BigDecimal contractPrice;
     private BigDecimal monthlyFee;
     private ContractType contractType;
@@ -17,7 +18,7 @@ public abstract class Contract {
     public Contract() {
     }
 
-    public Contract(String contractId, LocalDate date, String userId, LocalDate beginDate, LocalDate endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType) {
+    public Contract(String contractId, LocalDateTime date, String userId, LocalDateTime beginDate, LocalDateTime endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType) {
        this.contractId = contractId;
         setDate(date);
         this.userId = userId;
@@ -36,11 +37,11 @@ public abstract class Contract {
         this.contractId = contractId;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         if (date == null)
             throw new IllegalArgumentException("You have to specify contracts date.");
         this.date = date;
@@ -54,19 +55,19 @@ public abstract class Contract {
         this.userId = userId;
     }
 
-    public LocalDate getBeginDate() {
+    public LocalDateTime getBeginDate() {
         return beginDate;
     }
 
-    public void setBeginDate(LocalDate beginDate) {
+    public void setBeginDate(LocalDateTime beginDate) {
         this.beginDate = beginDate;
     }
 
-    public LocalDate getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 

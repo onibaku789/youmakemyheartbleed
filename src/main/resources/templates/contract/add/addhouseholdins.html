@@ -12,7 +12,7 @@
     <p th:if="${#fields.hasErrors('contractId')}" th:errors="*{contractId}"></p>
 
     <label for="date">Date</label><br>
-    <input type="date" id="date" th:field="*{date}"/>
+    <input type="datetime-local" id="date" th:field="*{date}"/>
     <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></p><br>
 
     <label for="userId">User</label><br>
@@ -20,11 +20,11 @@
     <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></p><br>
 
     <label for="beginDate">Begin Date</label><br>
-    <input type="date" id="beginDate" th:field="*{beginDate}"/>
+    <input type="datetime-local" id="beginDate" th:field="*{beginDate}"/>
     <p th:if="${#fields.hasErrors('beginDate')}" th:errors="*{beginDate}"></p><br>
 
     <label for="endDate">End Date</label><br>
-    <input type="date" id="endDate" th:field="*{endDate}"/>
+    <input type="datetime-local" id="endDate" th:field="*{endDate}"/>
     <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></p><br>
 
     <label for="contractPrice">Contract Price</label><br>

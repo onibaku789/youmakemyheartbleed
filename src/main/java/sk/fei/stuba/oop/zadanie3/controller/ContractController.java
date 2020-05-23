@@ -77,7 +77,7 @@ public class ContractController {
 
     //TODO
     @PostMapping("/contracts/addEST")
-    public String submitEstContract(@NotNull @ModelAttribute("item") EstateInsurance item, Model model) {
+    public String submitEstContract(@ModelAttribute("item") EstateInsurance item, Model model) {
         LOGGER.warn("submitContract " + item.toString());
         try {
             //TODO UPDATE USER CONTRACT LIST
