@@ -8,6 +8,7 @@
 <form th:action="@{/}" th:object="${item}" method="post">
 
     <p><label style="font-style: oblique">Edit Travel Insurance</label></p>
+
     <label for="beginDate">Begin Date</label><br>
     <input type="datetime-local" id="beginDate" th:field="*{beginDate}"/>
     <p th:if="${#fields.hasErrors('beginDate')}" th:errors="*{beginDate}"></p><br>

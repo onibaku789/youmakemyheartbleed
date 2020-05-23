@@ -59,24 +59,24 @@
 <table class="pure-table pure-table-bordered">
     <thead>
 <tr>
-    <th class="mdl-data-table__cell--non-numeric">Contract Id</th>
-    <th class="mdl-data-table__cell--non-numeric">Date</th>
-    <th class="mdl-data-table__cell--non-numeric">User id</th>
-    <th class="mdl-data-table__cell--non-numeric">Contract Type</th>
-    <th class="mdl-data-table__cell--non-numeric">Contract Price</th>
+
+    <th class="mdl-data-table__cell--non-numeric">Creation Date</th>
+    <th class="mdl-data-table__cell--non-numeric">Begin Date</th>
+    <th class="mdl-data-table__cell--non-numeric">End Date</th>
+    <th class="mdl-data-table__cell--non-numeric">Monthly Fee</th>
     <th class="mdl-data-table__cell--non-numeric">Actions</th>
 </tr>
 </thead>
 <tbody>
 <tr th:each="cont: ${items.getListOfContracts()}">
-    <td th:text="${cont.contractId}"></td>
+
     <td th:text="${cont.date}"></td>
-    <td th:text="${cont.userId}"></td>
-    <td th:text="${cont.contractType}"></td>
-    <td th:text="${cont.contractPrice}"></td>
+    <td th:text="${cont.beginDate}"></td>
+    <td th:text="${cont.endDate}"></td>
+    <td th:text="${cont.monthlyFee}"></td>
     <td>
-        <a class="btn btn-info" th:href="@{'/contracts/edit/' + ${cont.getContractId()}}">Edit</a>
-        <a class="btn btn-danger" th:href="@{'/contracts/details/' + ${cont.getContractId()}}">Details</a>
+        <button><a class="btn btn-info" th:href="@{'/contracts/edit/' + ${cont.getContractId()}}">Edit</a></button>
+            <button><a class="btn btn-danger" th:href="@{'/contracts/details/' + ${cont.getContractId()}}">Details</a></button>
     </td>
 </tr>
 </tbody>

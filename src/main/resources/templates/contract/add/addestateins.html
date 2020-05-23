@@ -8,17 +8,17 @@
 <!--th:action="@{'/contracts/addEST/'+ ${ide írd ami hozzáfér az idhez}}"-->
 <form th:action="@{/contracts/addEST}"  th:object="${item}" method="post">
 
- <label for="contractId">Contract Id</label><br>
+    <!--<label for="contractId">Contract Id</label><br>-->
     <input type="hidden" id="contractId" th:field="*{contractId}"/>
-    <p th:if="${#fields.hasErrors('contractId')}" th:errors="*{contractId}"></p><br>
+    <p th:if="${#fields.hasErrors('contractId')}" th:errors="*{contractId}"></p>
 
-    <label for="date">Date</label><br>
-    <input type="datetime-local" id="date" th:field="*{date}"/>
-    <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></p><br>
+    <!--<label for="date">Date</label><br>-->
+    <input type="hidden" id="date" th:field="*{date}"/>
+    <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></p>
 
     <!--   <label for="userId">User</label><br> -->
     <input type="hidden" id="userId" th:field="*{userId}"/>
-    <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></p><br>
+    <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></p>
 
     <label for="beginDate">Begin Date</label><br>
     <input type="datetime-local" id="beginDate" th:field="*{beginDate}"/>

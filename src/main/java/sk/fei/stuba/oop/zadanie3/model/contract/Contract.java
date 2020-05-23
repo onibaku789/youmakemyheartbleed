@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public abstract class Contract {
     private String contractId;
-    private LocalDateTime date; // needed LocalDateTime ??
+    private LocalDateTime date; // creation date
     private String userId;// INSURER - employee ID
 
     private LocalDateTime beginDate;
@@ -16,11 +16,12 @@ public abstract class Contract {
 
 
     public Contract() {
+        this.date = LocalDateTime.now();
     }
 
     public Contract(String contractId, LocalDateTime date, String userId, LocalDateTime beginDate, LocalDateTime endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType) {
         this.contractId = contractId;
-        setDate(date);
+        this.date = LocalDateTime.now();
         this.userId = userId;
         this.beginDate = beginDate;
         this.endDate = endDate;
