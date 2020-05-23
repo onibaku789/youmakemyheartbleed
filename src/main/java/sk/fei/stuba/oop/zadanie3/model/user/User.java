@@ -3,21 +3,32 @@ package sk.fei.stuba.oop.zadanie3.model.user;
 
 import sk.fei.stuba.oop.zadanie3.model.contract.Contract;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-public class User  {
+public class User {
 
     private String userId;
+    @NotBlank(message = "First name cannot be empty or null!")
     private String firstName;
+    @NotBlank(message = "Last name cannot be empty or null!")
     private String lastName;
+    @NotNull(message = "Birth id cannot be  null!")
     private int birthId;
+    @Email
+    @NotBlank
     private String email;
-
+    @NotBlank
     private String addrZipCode;
+    @NotBlank
     private String addrTown;
+    @NotBlank
     private String addrStreet;
+    @NotBlank
     private String addrHouseNumber;
 
     private String correspaddrZipCode;
@@ -79,8 +90,6 @@ public class User  {
     }
 
     public void setFirstName(String firstName) {
-        if (firstName.trim().isEmpty())
-            throw new IllegalArgumentException("You have to specify users first name.");
         this.firstName = firstName;
     }
 
@@ -89,8 +98,6 @@ public class User  {
     }
 
     public void setLastName(String lastName) {
-        if (lastName.trim().isEmpty())
-            throw new IllegalArgumentException("You have to specify users last name.");
         this.lastName = lastName;
     }
 
@@ -99,8 +106,7 @@ public class User  {
     }
 
     public void setBirthId(int birthId) {
-        if (birthId <= 0)
-            throw new IllegalArgumentException("You have to specify users birth ID.");
+
         this.birthId = birthId;
     }
 
@@ -109,11 +115,11 @@ public class User  {
     }
 
     public void setEmail(String email) {
-        if (email.trim().isEmpty())
-            throw new IllegalArgumentException("You have to specify users email.");
+
         this.email = email;
     }
-    public void addContracts(Contract contract){
+
+    public void addContracts(Contract contract) {
         listOfContracts.add(contract);
     }
 
@@ -188,6 +194,7 @@ public class User  {
     public void setCorrespaddrHouseNumber(String correspaddrHouseNumber) {
         this.correspaddrHouseNumber = correspaddrHouseNumber;
     }
+
     @Override
     public String toString() {
         return "User{" +

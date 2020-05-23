@@ -1,17 +1,28 @@
 package sk.fei.stuba.oop.zadanie3.model.contract;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public abstract class Contract {
     private String contractId;
+    @NotNull
     private LocalDateTime date; // creation date
+    @NotBlank
     private String userId;// INSURER - employee ID
-
+    @NotNull
     private LocalDateTime beginDate;
+    @NotNull
     private LocalDateTime endDate;
+    @NotNull
+    @Positive
     private BigDecimal contractPrice;
+    @NotNull
+    @Positive
     private BigDecimal monthlyFee;
+
     private ContractType contractType;
 
 
@@ -43,8 +54,6 @@ public abstract class Contract {
     }
 
     public void setDate(LocalDateTime date) {
-        if (date == null)
-            throw new IllegalArgumentException("You have to specify contracts date.");
         this.date = date;
     }
 

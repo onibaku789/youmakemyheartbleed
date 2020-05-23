@@ -5,19 +5,29 @@ import sk.fei.stuba.oop.zadanie3.model.contract.Contract;
 import sk.fei.stuba.oop.zadanie3.model.contract.ContractType;
 import sk.fei.stuba.oop.zadanie3.model.contract.nonlifeinsurance.EstateType;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class EstateInsurance extends Contract {
 
-
+    @NotNull
     private EstateType estateType;
+    @NotBlank
     private String estateAddrZipCode;
+    @NotBlank
     private String estateAddrTown;
+    @NotBlank
     private String estateAddrStreet;
-    private String estateAddrHouseNumber; // not string ..... its a fucking Address class
+    @NotBlank
+    private String estateAddrHouseNumber;
+    @NotNull// not string ..... its a fucking Address class
+    @Positive
     private BigDecimal estatePrice; // nehnutelnosti
+    @NotNull
     private boolean garage;  // pripoistenie garaze
 
     public EstateInsurance() {

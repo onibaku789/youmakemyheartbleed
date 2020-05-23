@@ -53,9 +53,13 @@
     <input type="number" id="dailyCompens" th:field="*{dailyCompens}"/>
     <p th:if="${#fields.hasErrors('dailyCompens')}" th:errors="*{dailyCompens}"></p><br>
 
-    <label for="territorialValidity">Territorial Validity</label><br>
-    <input type="text" id="territorialValidity" th:field="*{territorialValidity}"/>
-    <p th:if="${#fields.hasErrors('territorialValidity')}" th:errors="*{territorialValidity}"></p><br>
+    <label for="territorial">Territorial Validity</label><br>
+    <select name="territorial" id="territorial" th:field="*{territorialValidity}">
+        <option th:each="territorial: ${terrotorialValidity}"
+                th:value="${territorial}"
+                th:selected="${territorial.equals(item.getTerritorialValidity())}"
+                th:text="${territorial.toString()}"></option>
+    </select><br>
 
 
     <p> <input type="submit" value="Submit"/></p>

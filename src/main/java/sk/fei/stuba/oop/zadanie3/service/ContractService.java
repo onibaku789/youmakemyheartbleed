@@ -44,6 +44,7 @@ public class ContractService {
         List<Contract> userContractList = user.getListOfContracts();
         List<Contract> editedUserContractList = userContractList.stream().filter(contract1 ->
                 !contract1.getContractId().equals(contract.getContractId())).collect(Collectors.toList());
+
         Contract editedContract = contractRepository.editContract(contract);
         editedUserContractList.add(editedContract);
         user.setListOfContracts(editedUserContractList);

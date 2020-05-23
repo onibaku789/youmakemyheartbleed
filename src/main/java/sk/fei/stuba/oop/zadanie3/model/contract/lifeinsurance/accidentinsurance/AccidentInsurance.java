@@ -3,17 +3,30 @@ package sk.fei.stuba.oop.zadanie3.model.contract.lifeinsurance.accidentinsurance
 import sk.fei.stuba.oop.zadanie3.model.contract.Contract;
 import sk.fei.stuba.oop.zadanie3.model.contract.ContractType;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class AccidentInsurance extends Contract {
+    @NotNull
+    @Positive
     private int accidentConseq;
+    @NotNull
+    @Positive
     private int death;
+    @NotNull
+    @Positive
     private int dailyCompens;
+    @NotNull
     private TerritorialValidity territorialValidity;
+
     private String insured; // INSURED - customer ID
 
-    public AccidentInsurance() { super(); }
+    public AccidentInsurance() {
+        super();
+    }
 
     public AccidentInsurance(String contractId, LocalDateTime date, String userId, LocalDateTime beginDate, LocalDateTime endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType,
                              int accidentConseq, int death, int dailyCompens, TerritorialValidity territorialValidity) {
@@ -23,7 +36,6 @@ public class AccidentInsurance extends Contract {
         this.dailyCompens = dailyCompens;
         this.territorialValidity = territorialValidity;
     }
-
 
 
     public int getAccidentConseq() {

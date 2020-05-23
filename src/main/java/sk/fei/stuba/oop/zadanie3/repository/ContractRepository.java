@@ -32,9 +32,6 @@ public class ContractRepository {
         return allContracts.getOrDefault(id,null);
     }
 
-    public boolean checkIfContractIdExists(UUID contractId) {
-        return allContracts.containsKey(contractId);
-    }
 
     public void addContract(Contract newContract) {
         allContracts.put(newContract.getContractId(),newContract);
@@ -57,7 +54,7 @@ public class ContractRepository {
                 editHouseholdInsurance(editedContract, tempContract);
                 break;
         }
-        allContracts.replace(editedContract.getContractId(),tempContract);
+        allContracts.replace(tempContract.getContractId(),tempContract);
         return tempContract;
     }
 
@@ -68,43 +65,42 @@ public class ContractRepository {
     private void editEstateInsurance(Contract editedContract, Contract tempContract) {
         EstateInsurance editedEstateInsurance = (EstateInsurance) editedContract;
         EstateInsurance tempEstateInsurance = (EstateInsurance) tempContract;
-        editedEstateInsurance.setEstateAddrHouseNumber(tempEstateInsurance.getEstateAddrHouseNumber());
-        editedEstateInsurance.setEstateAddrStreet(tempEstateInsurance.getEstateAddrStreet());
-        editedEstateInsurance.setEstateAddrTown(tempEstateInsurance.getEstateAddrTown());
-        editedEstateInsurance.setEstateAddrZipCode(tempEstateInsurance.getEstateAddrZipCode());
-        editedEstateInsurance.setEstatePrice(tempEstateInsurance.getEstatePrice());
-        editedEstateInsurance.setEstateType(tempEstateInsurance.getEstateType());
-        editedEstateInsurance.setGarage(tempEstateInsurance.isGarage());
+        tempEstateInsurance.setEstateAddrHouseNumber(editedEstateInsurance.getEstateAddrHouseNumber());
+        tempEstateInsurance.setEstateAddrStreet(editedEstateInsurance.getEstateAddrStreet());
+        tempEstateInsurance.setEstateAddrTown(editedEstateInsurance.getEstateAddrTown());
+        tempEstateInsurance.setEstateAddrZipCode(editedEstateInsurance.getEstateAddrZipCode());
+        tempEstateInsurance.setEstatePrice(editedEstateInsurance.getEstatePrice());
+        tempEstateInsurance.setEstateType(editedEstateInsurance.getEstateType());
+        tempEstateInsurance.setGarage(editedEstateInsurance.isGarage());
     }
 
     private void editAccidentInsurance(Contract editedContract, Contract tempContract) {
         AccidentInsurance editedAccidentInsurance = (AccidentInsurance) editedContract;
         AccidentInsurance tempAccidentInsurance = (AccidentInsurance) tempContract;
-        editedAccidentInsurance.setAccidentConseq(tempAccidentInsurance.getAccidentConseq());
-        editedAccidentInsurance.setDailyCompens(tempAccidentInsurance.getDailyCompens());
-        editedAccidentInsurance.setDeath(tempAccidentInsurance.getDeath());
-        editedAccidentInsurance.setTerritorialValidity(tempAccidentInsurance.getTerritorialValidity());
+        tempAccidentInsurance.setAccidentConseq(editedAccidentInsurance.getAccidentConseq());
+        tempAccidentInsurance.setDailyCompens(editedAccidentInsurance.getDailyCompens());
+        tempAccidentInsurance.setDeath(editedAccidentInsurance.getDeath());
+        tempAccidentInsurance.setTerritorialValidity(editedAccidentInsurance.getTerritorialValidity());
     }
 
     private void editTravelInsurance(Contract editedContract, Contract tempContract) {
         TravelInsurance editedTravelInsurance = (TravelInsurance) editedContract;
         TravelInsurance tempTravelInsurance = (TravelInsurance) tempContract;
-        editedTravelInsurance.setInEU(tempTravelInsurance.isInEU());
-        editedTravelInsurance.setPurpose(tempTravelInsurance.getPurpose());
+        tempTravelInsurance.setInEU(editedTravelInsurance.isInEU());
+        tempTravelInsurance.setPurpose(editedTravelInsurance.getPurpose());
     }
 
     private void editHouseholdInsurance(Contract editedContract, Contract tempContract) {
         HouseholdInsurance editedHouseholdInsurance = (HouseholdInsurance) editedContract;
         HouseholdInsurance tempHouseholdInsurance = (HouseholdInsurance) tempContract;
-        editedHouseholdInsurance.setEstateType(tempHouseholdInsurance.getEstateType());
-        editedHouseholdInsurance.setEstateAddrHouseNumber(tempHouseholdInsurance.getEstateAddrHouseNumber());
-        editedHouseholdInsurance.setEstateAddrStreet(tempHouseholdInsurance.getEstateAddrStreet());
-        editedHouseholdInsurance.setEstateAddrTown(tempHouseholdInsurance.getEstateAddrTown());
-        editedHouseholdInsurance.setEstateAddrZipCode(tempHouseholdInsurance.getEstateAddrZipCode());
-        editedHouseholdInsurance.setEstatePrice(tempHouseholdInsurance.getEstatePrice());
-        editedHouseholdInsurance.setEquipmentPrice(tempHouseholdInsurance.getEquipmentPrice());
+        tempHouseholdInsurance.setEstateType(editedHouseholdInsurance.getEstateType());
+        tempHouseholdInsurance.setEstateAddrHouseNumber(editedHouseholdInsurance.getEstateAddrHouseNumber());
+        tempHouseholdInsurance.setEstateAddrStreet(editedHouseholdInsurance.getEstateAddrStreet());
+        tempHouseholdInsurance.setEstateAddrTown(editedHouseholdInsurance.getEstateAddrTown());
+        tempHouseholdInsurance.setEstateAddrZipCode(editedHouseholdInsurance.getEstateAddrZipCode());
+        tempHouseholdInsurance.setEstatePrice(editedHouseholdInsurance.getEstatePrice());
+        tempHouseholdInsurance.setEquipmentPrice(editedHouseholdInsurance.getEquipmentPrice());
     }
-
 
     private void editContract(Contract editedContract, Contract tempContract) {
         tempContract.setBeginDate(editedContract.getBeginDate());

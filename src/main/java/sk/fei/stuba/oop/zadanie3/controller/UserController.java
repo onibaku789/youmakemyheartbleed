@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import sk.fei.stuba.oop.zadanie3.model.user.User;
 import sk.fei.stuba.oop.zadanie3.service.UserService;
 
+import javax.validation.Valid;
+
 @Controller
 public class UserController {
     private final UserService userService;
@@ -27,7 +29,7 @@ public class UserController {
     }
 
     @PostMapping("/adduser")
-    public String submit(@ModelAttribute("item") User item, Model model) {
+    public String submit(@ModelAttribute("item") @Valid User item, Model model) {
         LOGGER.warn("submit " + item.toString());
         try {
             userService.addNewUser(item);
@@ -54,7 +56,7 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public String update(@ModelAttribute("item") User item, Model model) {
+    public String update(@ModelAttribute("item") @Valid User item, Model model) {
         LOGGER.warn("Update " + item.toString());
         try {
             item.setListOfContracts(userService.getUserById(item.getUserId()).getListOfContracts());

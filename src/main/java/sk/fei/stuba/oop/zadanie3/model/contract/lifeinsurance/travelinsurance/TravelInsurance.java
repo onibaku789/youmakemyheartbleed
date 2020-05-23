@@ -4,13 +4,15 @@ package sk.fei.stuba.oop.zadanie3.model.contract.lifeinsurance.travelinsurance;
 import sk.fei.stuba.oop.zadanie3.model.contract.Contract;
 import sk.fei.stuba.oop.zadanie3.model.contract.ContractType;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class TravelInsurance extends Contract {
-
+    @NotNull
     private boolean inEU;
+    @NotNull
     private PurposeOfTrip purpose;
     private String insured; // INSURED - customer ID
 
@@ -21,7 +23,9 @@ public class TravelInsurance extends Contract {
         this.purpose = purpose;
     }
 
-    public TravelInsurance() { super(); }
+    public TravelInsurance() {
+        super();
+    }
 
     public boolean isInEU() {
         return inEU;

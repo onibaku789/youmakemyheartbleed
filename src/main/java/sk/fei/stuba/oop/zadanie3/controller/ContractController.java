@@ -58,6 +58,7 @@ public class ContractController {
         AccidentInsurance accidentInsurance = (AccidentInsurance) contractService.getContractByContractId(contractId);
         LOGGER.warn("edit "+ accidentInsurance.toString());
         model.addAttribute("item",accidentInsurance);
+        model.addAttribute("terrotorialValidity", TerritorialValidity.values());
         return "contract/edit/editaccidentins";
     }
 
@@ -67,6 +68,7 @@ public class ContractController {
         Contract contract = contractService.getContractByContractId(contractId);
         LOGGER.warn("edit "+ contract.toString());
         model.addAttribute("item",contract);
+        model.addAttribute("estateType", EstateType.values());
         return "contract/edit/editestateins";
     }
 
@@ -75,6 +77,7 @@ public class ContractController {
         Contract contract = contractService.getContractByContractId(contractId);
         LOGGER.warn("edit "+ contract.toString());
         model.addAttribute("item",contract);
+        model.addAttribute("purposeOfTrip", PurposeOfTrip.values());
         return "contract/edit/edittravelins";
     }
 
@@ -83,13 +86,14 @@ public class ContractController {
         Contract contract = contractService.getContractByContractId(contractId);
         LOGGER.warn("edit "+ contract.toString());
         model.addAttribute("item",contract);
+        model.addAttribute("estateType", EstateType.values());
         return "contract/edit/edithouseholdins";
     }
 
-    //TODO
+
     @PostMapping("/contracts/editACC")
     public String updateAccContract(@ModelAttribute("item") AccidentInsurance item, Model model) {
-        LOGGER.warn("Update " + item.toString());
+        LOGGER.warn("Update " + item.getTerritorialValidity().toString());
         try{
             contractService.editContract(item);
             model.addAttribute("item", item);
@@ -104,7 +108,7 @@ public class ContractController {
 
     @PostMapping("/contracts/editTRA")
     public String updateTraContract(@ModelAttribute("item") TravelInsurance item, Model model) {
-        LOGGER.warn("Update " + item.toString());
+        LOGGER.warn("Update " + item.getPurpose().toString());
         try{
             contractService.editContract(item);
             model.addAttribute("item", item);
@@ -119,7 +123,7 @@ public class ContractController {
 
     @PostMapping("/contracts/editEST")
     public String updateEstContract(@ModelAttribute("item") EstateInsurance item, Model model) {
-        LOGGER.warn("Update " + item.toString());
+        LOGGER.warn("Update " + item.getEstateType().toString());
         try{
             contractService.editContract(item);
             model.addAttribute("item", item);
@@ -134,7 +138,7 @@ public class ContractController {
 
     @PostMapping("/contracts/editHOU")
     public String updateHouContract(@ModelAttribute("item") HouseholdInsurance item, Model model) {
-        LOGGER.warn("Update " + item.toString());
+        LOGGER.warn("Update " + item.getEstateType().toString());
         try{
             contractService.editContract(item);
             model.addAttribute("item", item);
@@ -152,6 +156,7 @@ public class ContractController {
         LOGGER.warn("ADD CONTRACT userID:  " + userId);
         switch (ContractType.valueOf(contractType)) {
             case ESTATE:
+                model.addAttribute("item",new EstateInsurance());
                 model.addAttribute("userId",userId);
                 return "redirect:/contracts/addEST/" + userId;
             case TRAVEL:
@@ -182,7 +187,7 @@ public class ContractController {
         return "contract/add/addestateins";
     }
 
-    //TODO
+
     @PostMapping("/contracts/addEST")
     public String submitEstContract(@ModelAttribute("item") EstateInsurance item,
                                     Model model) {
@@ -219,7 +224,7 @@ public class ContractController {
     public String submitAccContract(@ModelAttribute("item") AccidentInsurance item, Model model) {
         LOGGER.warn("submitContract " + item.toString());
         try {
-            //TODO UPDATE USER CONTRACT LIST
+
             item.setContractId(UUID.randomUUID().toString());
             contractService.addNewContract(item);
             User user = userService.getUserById(item.getUserId());
@@ -246,7 +251,7 @@ public class ContractController {
     public String submitTraContract(@ModelAttribute("item") TravelInsurance item, Model model) {
         LOGGER.warn("submitContract " + item.toString());
         try {
-            //TODO UPDATE USER CONTRACT LIST
+
             item.setContractId(UUID.randomUUID().toString());
             contractService.addNewContract(item);
             User user = userService.getUserById(item.getUserId());
@@ -273,7 +278,7 @@ public class ContractController {
     public String submitHouContract(@ModelAttribute("item") HouseholdInsurance item, Model model) {
         LOGGER.warn("submitContract " + item.toString());
         try {
-            //TODO UPDATE USER CONTRACT LIST
+
             item.setContractId(UUID.randomUUID().toString());
             contractService.addNewContract(item);
             User user = userService.getUserById(item.getUserId());

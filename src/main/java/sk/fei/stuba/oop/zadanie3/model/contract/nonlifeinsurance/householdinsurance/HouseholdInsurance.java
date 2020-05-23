@@ -5,21 +5,33 @@ import sk.fei.stuba.oop.zadanie3.model.contract.Contract;
 import sk.fei.stuba.oop.zadanie3.model.contract.ContractType;
 import sk.fei.stuba.oop.zadanie3.model.contract.nonlifeinsurance.EstateType;
 
-
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class HouseholdInsurance extends Contract {
+    @NotNull
     private EstateType estateType;
+    @NotBlank
     private String estateAddrZipCode;
+    @NotBlank
     private String estateAddrTown;
+    @NotBlank
     private String estateAddrStreet;
+    @NotBlank
     private String estateAddrHouseNumber;
+    @NotNull
+    @Positive
     private BigDecimal estatePrice; // nehnutelnosti
+    @NotNull
+    @Positive
     private BigDecimal equipmentPrice; //zariadenia
 
-    public HouseholdInsurance() { super(); }
+    public HouseholdInsurance() {
+        super();
+    }
 
     public HouseholdInsurance(String contractId, LocalDateTime date, String userId,
                               LocalDateTime beginDate, LocalDateTime endDate,
@@ -37,7 +49,6 @@ public class HouseholdInsurance extends Contract {
         this.estatePrice = estatePrice;
         this.equipmentPrice = equipmentPrice;
     }
-
 
 
     public EstateType getEstateType() {
