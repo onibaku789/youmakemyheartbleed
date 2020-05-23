@@ -12,6 +12,7 @@ public class AccidentInsurance extends Contract {
     private int dailycompens;
     private TerritorialValidity territorialValidity;
 
+    public AccidentInsurance() { super(); }
 
     public AccidentInsurance(String contractId, LocalDate date, String userId, LocalDate beginDate, LocalDate endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType,
                              int accidentConseq, int death, int dailycompens, TerritorialValidity territorialValidity) {
@@ -22,9 +23,7 @@ public class AccidentInsurance extends Contract {
         this.territorialValidity = territorialValidity;
     }
 
-    public AccidentInsurance() {
 
-    }
 
     public int getAccidentConseq() {
         return accidentConseq;

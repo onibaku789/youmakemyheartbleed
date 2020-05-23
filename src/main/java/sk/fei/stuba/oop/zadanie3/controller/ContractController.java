@@ -70,13 +70,14 @@ public class ContractController {
             item.setContractId(UUID.randomUUID().toString());
             contractService.addNewContract(item);
             return "redirect:/contracts/details/" + item.getContractId();
+            //return "user/viewoneuser/";
         } catch (IllegalArgumentException ex) {
             System.err.println("SUBMIT CONTRACT ERROR");
             return "error";
         }
     }
 
-    @PostMapping("/contracts/addACCIDENT")
+    @PostMapping("/contracts/addACC")
     public String submitAccContract(@ModelAttribute("item") AccidentInsurance item, Model model) {
         LOGGER.warn("submitContract " + item.toString());
         try {
@@ -90,7 +91,7 @@ public class ContractController {
         }
     }
 
-    @PostMapping("/contracts/addTRAVEL")
+    @PostMapping("/contracts/addTRA")
     public String submitTraContract(@ModelAttribute("item") TravelInsurance item, Model model) {
         LOGGER.warn("submitContract " + item.toString());
         try {
@@ -104,7 +105,7 @@ public class ContractController {
         }
     }
 
-    @PostMapping("/contracts/addHOUSEHOLD")
+    @PostMapping("/contracts/addHOU")
     public String submitHouContract(@ModelAttribute("item") HouseholdInsurance item, Model model) {
         LOGGER.warn("submitContract " + item.toString());
         try {

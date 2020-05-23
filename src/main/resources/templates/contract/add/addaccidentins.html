@@ -20,11 +20,11 @@
     <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></p><br>
 
     <label for="beginDate">Begin Date</label><br>
-    <input type="beginDate" id="beginDate" th:field="*{beginDate}"/>
+    <input type="date" id="beginDate" th:field="*{beginDate}"/>
     <p th:if="${#fields.hasErrors('beginDate')}" th:errors="*{beginDate}"></p><br>
 
     <label for="endDate">End Date</label><br>
-    <input type="endDate" id="endDate" th:field="*{endDate}"/>
+    <input type="date" id="endDate" th:field="*{endDate}"/>
     <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></p><br>
 
     <label for="contractPrice">Contract Price</label><br>
@@ -36,7 +36,7 @@
     <p th:if="${#fields.hasErrors('monthlyFee')}" th:errors="*{monthlyFee}"></p><br>
 
     <label for="accidentConseq">Accident Consequence</label><br>
-    <input type="number" id="accidentConseq" th:field="*{acciderntConseq}"/>
+    <input type="number" id="accidentConseq" th:field="*{accidentConseq}"/>
     <p th:if="${#fields.hasErrors('accidentConseq')}" th:errors="*{accidentConseq}"></p><br>
 
     <label for="death">Death</label><br>

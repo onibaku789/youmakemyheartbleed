@@ -58,10 +58,12 @@
 <table class="pure-table pure-table-bordered">
     <thead>
 <tr>
-    <th class="mdl-data-table__cell--non-numeric">Id</th>
+    <th class="mdl-data-table__cell--non-numeric">Contract Id</th>
     <th class="mdl-data-table__cell--non-numeric">Date</th>
     <th class="mdl-data-table__cell--non-numeric">User id</th>
-    <th class="mdl-data-table__cell--non-numeric">contractType</th>
+    <th class="mdl-data-table__cell--non-numeric">Contract Type</th>
+    <th class="mdl-data-table__cell--non-numeric">Contract Price</th>
+    <th class="mdl-data-table__cell--non-numeric">Actions</th>
 </tr>
 </thead>
 <tbody>
@@ -70,6 +72,12 @@
     <td th:text="${cont.date}"></td>
     <td th:text="${cont.userId}"></td>
     <td th:text="${cont.contractType}"></td>
+    <td th:text="${cont.contractPrice}"></td>
+    <td>
+        <!--TODO-->
+        <a class="btn btn-info" th:href="@{'/contracts/edit/' + ${item.getUserId()}}">Edit</a>
+        <a class="btn btn-danger" th:href="@{'/contracts/details/' + ${item.getUserId()}}">Details</a>
+    </td>
 </tr>
 </tbody>
 </table>

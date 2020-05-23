@@ -19,13 +19,13 @@
     <input type="text" id="userId" th:field="*{userId}"/>
     <p th:if="${#fields.hasErrors('user')}" th:errors="*{userId}"></p><br>
 
-    <label for="BeginDate">Begin Date</label><br>
-    <input type="date" id="BeginDate" th:field="*{date}"/>
-    <p th:if="${#fields.hasErrors('begindate')}" th:errors="*{date}"></p><br>
+    <label for="beginDate">Begin Date</label><br>
+    <input type="date" id="beginDate" th:field="*{beginDate}"/>
+    <p th:if="${#fields.hasErrors('begindate')}" th:errors="*{beginDate}"></p><br>
 
-    <label for="EndDate">End Date</label><br>
-    <input type="date" id="EndDate" th:field="*{date}"/>
-    <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{date}"></p><br>
+    <label for="endDate">End Date</label><br>
+    <input type="date" id="endDate" th:field="*{endDate}"/>
+    <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></p><br>
 
     <label for="contractPrice">Contract Price</label><br>
     <input type="number" id="contractPrice" th:field="*{contractPrice}"/>

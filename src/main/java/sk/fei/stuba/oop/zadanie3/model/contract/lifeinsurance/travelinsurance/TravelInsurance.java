@@ -19,9 +19,7 @@ public class TravelInsurance extends Contract {
         this.purpose = purpose;
     }
 
-    public TravelInsurance() {
-
-    }
+    public TravelInsurance() { super(); }
 
     public boolean isInEU() {
         return inEU;

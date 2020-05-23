@@ -18,6 +18,7 @@ public class HouseholdInsurance extends Contract {
     private BigDecimal estatePrice; // nehnutelnosti
     private BigDecimal equipmentPrice; //zariadenia
 
+    public HouseholdInsurance() { super(); }
 
     public HouseholdInsurance(String contractId, LocalDate date, String userId,
                               LocalDate beginDate, LocalDate endDate,
@@ -36,9 +37,7 @@ public class HouseholdInsurance extends Contract {
         this.equipmentPrice = equipmentPrice;
     }
 
-    public HouseholdInsurance() {
 
-    }
 
     public EstateType getEstateType() {
         return estateType;
