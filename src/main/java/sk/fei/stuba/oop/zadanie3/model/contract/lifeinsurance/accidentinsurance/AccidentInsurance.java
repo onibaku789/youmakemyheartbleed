@@ -4,24 +4,23 @@ import sk.fei.stuba.oop.zadanie3.model.contract.Contract;
 import sk.fei.stuba.oop.zadanie3.model.contract.ContractType;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class AccidentInsurance extends Contract {
     private int accidentConseq;
     private int death;
-    private int dailycompens;
+    private int dailyCompens;
     private TerritorialValidity territorialValidity;
     private String insured; // INSURED - customer ID
 
     public AccidentInsurance() { super(); }
 
     public AccidentInsurance(String contractId, LocalDateTime date, String userId, LocalDateTime beginDate, LocalDateTime endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType,
-                             int accidentConseq, int death, int dailycompens, TerritorialValidity territorialValidity) {
+                             int accidentConseq, int death, int dailyCompens, TerritorialValidity territorialValidity) {
         super(contractId, date, userId, beginDate, endDate, contractPrice, monthlyFee, contractType);
         this.accidentConseq = accidentConseq;
         this.death = death;
-        this.dailycompens = dailycompens;
+        this.dailyCompens = dailyCompens;
         this.territorialValidity = territorialValidity;
     }
 
@@ -43,12 +42,12 @@ public class AccidentInsurance extends Contract {
         this.death = death;
     }
 
-    public int getDailycompens() {
-        return dailycompens;
+    public int getDailyCompens() {
+        return dailyCompens;
     }
 
-    public void setDailycompens(int dailycompens) {
-        this.dailycompens = dailycompens;
+    public void setDailyCompens(int dailyCompens) {
+        this.dailyCompens = dailyCompens;
     }
 
     public TerritorialValidity getTerritorialValidity() {
@@ -65,7 +64,7 @@ public class AccidentInsurance extends Contract {
                 "AccidentInsurance{" +
                 "accidentConseq=" + accidentConseq +
                 ", death=" + death +
-                ", dailycompens=" + dailycompens +
+                ", dailycompens=" + dailyCompens +
                 ", territorialValidity=" + territorialValidity +
                 '}';
     }

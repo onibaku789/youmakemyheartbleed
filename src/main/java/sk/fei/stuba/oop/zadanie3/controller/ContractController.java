@@ -19,7 +19,6 @@ import sk.fei.stuba.oop.zadanie3.model.user.User;
 import sk.fei.stuba.oop.zadanie3.service.ContractService;
 import sk.fei.stuba.oop.zadanie3.service.UserService;
 
-import java.util.Objects;
 import java.util.UUID;
 
 @Controller
@@ -32,9 +31,52 @@ public class ContractController {
         this.userService = userService;
     }
 
-    //TODO
     @GetMapping("/contracts/edit/{contractId}")
-    public String editContract(@PathVariable String contractId, Model model) {
+    public String editContractDriver(@PathVariable String contractId) {
+        Contract contract = contractService.getContractByContractId(contractId);
+        switch (contract.getContractType()){
+            case ESTATE:
+                return "redirect:/contracts/editEST/" + contractId;
+            case TRAVEL:
+                return "redirect:/contracts/editTRA/" + contractId;
+            case ACCIDENT:
+                return "redirect:/contracts/editACC/" + contractId;
+            case HOUSEHOLD:
+                return "redirect:/contracts/editHOU/" + contractId;
+            default:
+                throw new IllegalArgumentException();
+        }
+
+    }
+
+    //TODO
+    @GetMapping("/contracts/editACC/{contractId}")
+    public String editAccContract(@PathVariable String contractId, Model model) {
+        AccidentInsurance accidentInsurance = (AccidentInsurance) contractService.getContractByContractId(contractId);
+        LOGGER.warn("edit "+ accidentInsurance.toString());
+        model.addAttribute("item",accidentInsurance);
+        return "contract/edit/editaccidentins";
+    }
+
+    //TODO
+    @GetMapping("/contracts/editEST/{contractId}")
+    public String editEstContract(@PathVariable String contractId, Model model) {
+        Contract contract = contractService.getContractByContractId(contractId);
+        LOGGER.warn("edit "+ contract.toString());
+        model.addAttribute("item",contract);
+        return "";
+    }
+    //TODO
+    @GetMapping("/contracts/editTRA/{contractId}")
+    public String editTraContract(@PathVariable String contractId, Model model) {
+        Contract contract = contractService.getContractByContractId(contractId);
+        LOGGER.warn("edit "+ contract.toString());
+        model.addAttribute("item",contract);
+        return "";
+    }
+    //TODO
+    @GetMapping("/contracts/editHOU/{contractId}")
+    public String editHouContract(@PathVariable String contractId, Model model) {
         Contract contract = contractService.getContractByContractId(contractId);
         LOGGER.warn("edit "+ contract.toString());
         model.addAttribute("item",contract);
@@ -42,13 +84,13 @@ public class ContractController {
     }
 
     //TODO
-    @PostMapping("/contracts/edit")
-    public String updateContract(Contract item, Model model) {
+    @PostMapping("/contracts/editACC")
+    public String updateAccContract(@ModelAttribute("item") AccidentInsurance item, Model model) {
         LOGGER.warn("Update " + item.toString());
         try{
             contractService.editContract(item);
             model.addAttribute("item", item);
-            return "user/viewoneuser";
+            return "redirect:/index";
         }
         catch(IllegalArgumentException ex)
         {
@@ -67,15 +109,15 @@ public class ContractController {
             case TRAVEL:
                 model.addAttribute("item", new TravelInsurance());
                 model.addAttribute("userId", userId);
-                return "contract/add/addtravelins";
+                return "redirect:/contracts/addTRA/" + userId;
             case ACCIDENT:
                 model.addAttribute("item", new AccidentInsurance());
                 model.addAttribute("userId", userId);
-                return "contract/add/addaccidentins";
+                return "redirect:/contracts/addACC/" + userId;
             case HOUSEHOLD:
                 model.addAttribute("item", new HouseholdInsurance());
                 model.addAttribute("userId", userId);
-                return "contract/add/addhouseholdins";
+                return "redirect:/contracts/addHOU/" + userId;
             default:
                 throw new IllegalArgumentException("Invalid ContractType chosen.");
         }
@@ -115,12 +157,13 @@ public class ContractController {
     }
     @GetMapping("/contracts/addACC/{userId}")
     public String getSubmitAccContract(Model model, @PathVariable String userId){
-        AccidentInsurance  accidentInsurance = new AccidentInsurance();
+        AccidentInsurance accidentInsurance = new AccidentInsurance();
         accidentInsurance.setUserId(userId);
         accidentInsurance.setContractType(ContractType.ACCIDENT);
         model.addAttribute("item", accidentInsurance);
         return "contract/add/addaccidentins";
     }
+
 
     @PostMapping("/contracts/addACC")
     public String submitAccContract(@ModelAttribute("item") AccidentInsurance item, Model model) {
@@ -129,6 +172,10 @@ public class ContractController {
             //TODO UPDATE USER CONTRACT LIST
             item.setContractId(UUID.randomUUID().toString());
             contractService.addNewContract(item);
+            User user = userService.getUserById(item.getUserId());
+            user.addContracts(item);
+            userService.editUser(user);
+            model.addAttribute("users",userService.getAllUser());
             return "redirect:/contracts/details/" + item.getContractId();
         } catch (IllegalArgumentException ex) {
             System.err.println("SUBMIT CONTRACT ERROR");
@@ -139,6 +186,7 @@ public class ContractController {
     public String getSubmitTraContract(Model model, @PathVariable String userId){
         TravelInsurance  travelInsurance = new TravelInsurance();
         travelInsurance.setUserId(userId);
+        travelInsurance.setContractType(ContractType.TRAVEL);
         model.addAttribute("item", travelInsurance);
         return "contract/add/addtravelins";
     }
@@ -150,6 +198,10 @@ public class ContractController {
             //TODO UPDATE USER CONTRACT LIST
             item.setContractId(UUID.randomUUID().toString());
             contractService.addNewContract(item);
+            User user = userService.getUserById(item.getUserId());
+            user.addContracts(item);
+            userService.editUser(user);
+            model.addAttribute("users",userService.getAllUser());
             return "redirect:/contracts/details/" + item.getContractId();
         } catch (IllegalArgumentException ex) {
             System.err.println("SUBMIT CONTRACT ERROR");
@@ -160,6 +212,7 @@ public class ContractController {
     public String getSubmitHouContract(Model model, @PathVariable String userId){
         HouseholdInsurance  householdInsurance = new HouseholdInsurance();
         householdInsurance.setUserId(userId);
+        householdInsurance.setContractType(ContractType.HOUSEHOLD);
         model.addAttribute("item", householdInsurance);
         return "contract/add/addhouseholdins";
     }
@@ -171,6 +224,10 @@ public class ContractController {
             //TODO UPDATE USER CONTRACT LIST
             item.setContractId(UUID.randomUUID().toString());
             contractService.addNewContract(item);
+            User user = userService.getUserById(item.getUserId());
+            user.addContracts(item);
+            userService.editUser(user);
+            model.addAttribute("users",userService.getAllUser());
             return "redirect:/contracts/details/" + item.getContractId();
         } catch (IllegalArgumentException ex) {
             System.err.println("SUBMIT CONTRACT ERROR");
@@ -180,10 +237,24 @@ public class ContractController {
 
     @GetMapping("/contracts/details/{contractId}")
     public String detailedContract(@PathVariable String contractId, Model model) {
-        //TODO
-        model.addAttribute("contract",contractService.getContractByContractId(contractId));
-        return "contract/view/viewestateins";
+        Contract contract = contractService.getContractByContractId(contractId);
+        model.addAttribute("contract",contract);
+        LOGGER.warn(contract.toString());
+        switch (contract.getContractType()){
+            case HOUSEHOLD:
+                return "contract/view/viewhouseholdins";
+            case ACCIDENT:
+                return "contract/view/viewaccidentins";
+            case TRAVEL:
+                return "contract/view/viewtravelins";
+            case ESTATE:
+                return "contract/view/viewestateins";
+            default:
+                throw new IllegalArgumentException("KEKW");
+        }
     }
+
+
 
 
 }

@@ -5,11 +5,15 @@
     <title>Add new travel insurance</title>
 </head>
 <body>
-<form th:action="@{/contracts/addTRAVEL}" th:object="${item}" method="post">
+<form th:action="@{/contracts/addTRA}" th:object="${item}" method="post">
 
     <!--<label for="contractId">Contract Id</label>-->
     <input type="hidden" id="contractId" th:field="*{contractId}"/>
     <p th:if="${#fields.hasErrors('contractId')}" th:errors="*{contractId}"></p>
+
+    <!--<label for="contractId">Contract Id</label><br>-->
+    <input type="hidden" id="contractType" th:field="*{contractType}"/>
+    <p th:if="${#fields.hasErrors('contractType')}" th:errors="*{contractType}"></p>
 
     <!--<label for="date">Date</label><br>-->
     <input type="hidden" id="date" th:field="*{date}"/>

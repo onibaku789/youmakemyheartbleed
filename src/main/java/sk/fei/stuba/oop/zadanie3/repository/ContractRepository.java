@@ -81,7 +81,7 @@ public class ContractRepository {
         AccidentInsurance editedAccidentInsurance = (AccidentInsurance) editedContract;
         AccidentInsurance tempAccidentInsurance = (AccidentInsurance) tempContract;
         editedAccidentInsurance.setAccidentConseq(tempAccidentInsurance.getAccidentConseq());
-        editedAccidentInsurance.setDailycompens(tempAccidentInsurance.getDailycompens());
+        editedAccidentInsurance.setDailyCompens(tempAccidentInsurance.getDailyCompens());
         editedAccidentInsurance.setDeath(tempAccidentInsurance.getDeath());
         editedAccidentInsurance.setTerritorialValidity(tempAccidentInsurance.getTerritorialValidity());
     }

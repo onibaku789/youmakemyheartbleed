@@ -57,6 +57,7 @@ public class UserController {
     public String update(@ModelAttribute("item") User item, Model model) {
         LOGGER.warn("Update " + item.toString());
         try {
+            item.setListOfContracts(userService.getUserById(item.getUserId()).getListOfContracts());
             userService.editUser(item);
             model.addAttribute("items", item);
             return "user/viewoneuser";

@@ -11,13 +11,17 @@
     <input type="hidden" id="contractId" th:field="*{contractId}"/>
     <p th:if="${#fields.hasErrors('contractId')}" th:errors="*{contractId}"></p>
 
+    <!--<label for="contractId">Contract Id</label><br>-->
+    <input type="hidden" id="contractType" th:field="*{contractType}"/>
+    <p th:if="${#fields.hasErrors('contractType')}" th:errors="*{contractType}"></p>
+
     <!--<label for="date">Date</label><br>-->
     <input type="hidden" id="date" th:field="*{date}"/>
     <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></p><br>
 
-    <label for="userId">User</label><br>
-    <input type="text" id="userId" th:field="*{userId}"/>
-    <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></p><br>
+    <!--<<label for="userId">User</label><br>-->
+    <input type="hidden" id="userId" th:field="*{userId}"/>
+    <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></p>
 
     <label for="beginDate">Begin Date</label><br>
     <input type="datetime-local" id="beginDate" th:field="*{beginDate}"/>
@@ -43,9 +47,9 @@
     <input type="number" id="death" th:field="*{death}"/>
     <p th:if="${#fields.hasErrors('death')}" th:errors="*{death}"></p><br>
 
-    <label for="dailycompens">Daily Compensation</label><br>
-    <input type="number" id="dailycompens" th:field="*{dailycompens}"/>
-    <p th:if="${#fields.hasErrors('dailycompens')}" th:errors="*{dailycompens}"></p><br>
+    <label for="dailyCompens">Daily Compensation</label><br>
+    <input type="number" id="dailyCompens" th:field="*{dailyCompens}"/>
+    <p th:if="${#fields.hasErrors('dailyCompens')}" th:errors="*{dailyCompens}"></p><br>
 
     <label for="territorialValidity">Territorial Validity</label><br>
     <input type="text" id="territorialValidity" th:field="*{territorialValidity}"/>
