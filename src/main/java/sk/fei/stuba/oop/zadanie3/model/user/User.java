@@ -113,6 +113,9 @@ public class User  {
             throw new IllegalArgumentException("You have to specify users email.");
         this.email = email;
     }
+    public void addContracts(Contract contract){
+        listOfContracts.add(contract);
+    }
 
     public List<Contract> getListOfContracts() {
         return new ArrayList<>(listOfContracts);

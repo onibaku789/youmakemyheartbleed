@@ -91,16 +91,21 @@ public abstract class Contract {
         return contractType;
     }
 
+    public void setContractType(ContractType contractType) {
+        this.contractType = contractType;
+    }
+
     @Override
     public String toString() {
         return "Contract{" +
-                "contractId=" + contractId +
+                "contractId='" + contractId + '\'' +
                 ", date=" + date +
-                ", userId=" + userId +
+                ", userId='" + userId + '\'' +
                 ", beginDate=" + beginDate +
                 ", endDate=" + endDate +
                 ", contractPrice=" + contractPrice +
                 ", monthlyFee=" + monthlyFee +
+                ", contractType=" + contractType +
                 '}';
     }
 }

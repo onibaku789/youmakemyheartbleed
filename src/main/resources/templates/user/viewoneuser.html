@@ -75,8 +75,8 @@
     <td th:text="${cont.contractType}"></td>
     <td th:text="${cont.contractPrice}"></td>
     <td>
-        <a class="btn btn-info" th:href="@{'/contracts/edit/' + ${item.getUserId()}}">Edit</a>
-        <a class="btn btn-danger" th:href="@{'/contracts/details/' + ${item.getUserId()}}">Details</a>
+        <a class="btn btn-info" th:href="@{'/contracts/edit/' + ${cont.getContractId()}}">Edit</a>
+        <a class="btn btn-danger" th:href="@{'/contracts/details/' + ${cont.getContractId()}}">Details</a>
     </td>
 </tr>
 </tbody>

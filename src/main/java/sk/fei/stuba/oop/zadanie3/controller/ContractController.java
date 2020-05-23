@@ -62,8 +62,7 @@ public class ContractController {
         LOGGER.warn("ADD CONTRACT userID:  " + userId);
         switch (ContractType.valueOf(contractType)) {
             case ESTATE:
-                model.addAttribute("item", new EstateInsurance());
-                model.addAttribute("userId", userId);
+                model.addAttribute("userId",userId);
                 return "redirect:/contracts/addEST/" + userId;
             case TRAVEL:
                 model.addAttribute("item", new TravelInsurance());
@@ -82,19 +81,29 @@ public class ContractController {
         }
     }
 
-    //TODO
+
     @GetMapping("/contracts/addEST/{userId}")
+    public String getSubmitEstContract(Model model, @PathVariable String userId){
+        EstateInsurance  estateInsurance = new EstateInsurance();
+        estateInsurance.setUserId(userId);
+        estateInsurance.setContractType(ContractType.ESTATE);
+        model.addAttribute("item", estateInsurance);
+        return "contract/add/addestateins";
+    }
+
+    //TODO
+    @PostMapping("/contracts/addEST")
     public String submitEstContract(@ModelAttribute("item") EstateInsurance item,
-                                    @PathVariable("userId") String userId,
                                     Model model) {
         LOGGER.warn("submitContract " + item.toString());
         LOGGER.warn(model.toString());
-        LOGGER.warn(userId);
+
         try {
-            //TODO UPDATE USER CONTRACT LIST
-            item.setUserId(userId);
             item.setContractId(UUID.randomUUID().toString());
             contractService.addNewContract(item);
+            User user = userService.getUserById(item.getUserId());
+            user.addContracts(item);
+            userService.editUser(user);
             model.addAttribute("users",userService.getAllUser());
             LOGGER.warn(item.toString());
             return "redirect:/contracts/details/" + item.getContractId();
@@ -103,6 +112,14 @@ public class ContractController {
             System.err.println("SUBMIT CONTRACT ERROR");
             return "error";
         }
+    }
+    @GetMapping("/contracts/addACC/{userId}")
+    public String getSubmitAccContract(Model model, @PathVariable String userId){
+        AccidentInsurance  accidentInsurance = new AccidentInsurance();
+        accidentInsurance.setUserId(userId);
+        accidentInsurance.setContractType(ContractType.ACCIDENT);
+        model.addAttribute("item", accidentInsurance);
+        return "contract/add/addaccidentins";
     }
 
     @PostMapping("/contracts/addACC")
@@ -118,6 +135,13 @@ public class ContractController {
             return "error";
         }
     }
+    @GetMapping("/contracts/addTRA/{userId}")
+    public String getSubmitTraContract(Model model, @PathVariable String userId){
+        TravelInsurance  travelInsurance = new TravelInsurance();
+        travelInsurance.setUserId(userId);
+        model.addAttribute("item", travelInsurance);
+        return "contract/add/addtravelins";
+    }
 
     @PostMapping("/contracts/addTRA")
     public String submitTraContract(@ModelAttribute("item") TravelInsurance item, Model model) {
@@ -131,6 +155,13 @@ public class ContractController {
             System.err.println("SUBMIT CONTRACT ERROR");
             return "error";
         }
+    }
+    @GetMapping("/contracts/addHOU/{userId}")
+    public String getSubmitHouContract(Model model, @PathVariable String userId){
+        HouseholdInsurance  householdInsurance = new HouseholdInsurance();
+        householdInsurance.setUserId(userId);
+        model.addAttribute("item", householdInsurance);
+        return "contract/add/addhouseholdins";
     }
 
     @PostMapping("/contracts/addHOU")
