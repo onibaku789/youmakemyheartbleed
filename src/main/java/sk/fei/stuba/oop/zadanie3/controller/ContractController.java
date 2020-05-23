@@ -49,7 +49,7 @@ public class ContractController {
 
     }
 
-    //TODO
+
     @GetMapping("/contracts/editACC/{contractId}")
     public String editAccContract(@PathVariable String contractId, Model model) {
         AccidentInsurance accidentInsurance = (AccidentInsurance) contractService.getContractByContractId(contractId);
@@ -58,34 +58,79 @@ public class ContractController {
         return "contract/edit/editaccidentins";
     }
 
-    //TODO
+
     @GetMapping("/contracts/editEST/{contractId}")
     public String editEstContract(@PathVariable String contractId, Model model) {
         Contract contract = contractService.getContractByContractId(contractId);
         LOGGER.warn("edit "+ contract.toString());
         model.addAttribute("item",contract);
-        return "";
+        return "contract/edit/editestateins";
     }
-    //TODO
+
     @GetMapping("/contracts/editTRA/{contractId}")
     public String editTraContract(@PathVariable String contractId, Model model) {
         Contract contract = contractService.getContractByContractId(contractId);
         LOGGER.warn("edit "+ contract.toString());
         model.addAttribute("item",contract);
-        return "";
+        return "contract/edit/edittravelins";
     }
-    //TODO
+
     @GetMapping("/contracts/editHOU/{contractId}")
     public String editHouContract(@PathVariable String contractId, Model model) {
         Contract contract = contractService.getContractByContractId(contractId);
         LOGGER.warn("edit "+ contract.toString());
         model.addAttribute("item",contract);
-        return "";
+        return "contract/edit/edithouseholdins";
     }
 
     //TODO
     @PostMapping("/contracts/editACC")
     public String updateAccContract(@ModelAttribute("item") AccidentInsurance item, Model model) {
+        LOGGER.warn("Update " + item.toString());
+        try{
+            contractService.editContract(item);
+            model.addAttribute("item", item);
+            return "redirect:/index";
+        }
+        catch(IllegalArgumentException ex)
+        {
+            System.err.println("Contract Update ERROR");
+            return "error";
+        }
+    }
+
+    @PostMapping("/contracts/editTRA")
+    public String updateTraContract(@ModelAttribute("item") TravelInsurance item, Model model) {
+        LOGGER.warn("Update " + item.toString());
+        try{
+            contractService.editContract(item);
+            model.addAttribute("item", item);
+            return "redirect:/index";
+        }
+        catch(IllegalArgumentException ex)
+        {
+            System.err.println("Contract Update ERROR");
+            return "error";
+        }
+    }
+
+    @PostMapping("/contracts/editEST")
+    public String updateEstContract(@ModelAttribute("item") EstateInsurance item, Model model) {
+        LOGGER.warn("Update " + item.toString());
+        try{
+            contractService.editContract(item);
+            model.addAttribute("item", item);
+            return "redirect:/index";
+        }
+        catch(IllegalArgumentException ex)
+        {
+            System.err.println("Contract Update ERROR");
+            return "error";
+        }
+    }
+
+    @PostMapping("/contracts/editHOU")
+    public String updateHouContract(@ModelAttribute("item") HouseholdInsurance item, Model model) {
         LOGGER.warn("Update " + item.toString());
         try{
             contractService.editContract(item);

@@ -17,9 +17,9 @@
 
     <!--<label for="date">Date</label><br>-->
     <input type="hidden" id="date" th:field="*{date}"/>
-    <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></p><br>
+    <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></p>
 
-    <!--<<label for="userId">User</label><br>-->
+    <!--<label for="userId">User</label><br>-->
     <input type="hidden" id="userId" th:field="*{userId}"/>
     <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></p>
 

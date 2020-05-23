@@ -46,11 +46,9 @@
 <button type="button">
     <a class="button" th:href="@{'/contracts/edit/' +${contract.contractId}}" >Edit</a>
 </button>
+
 <button type="button">
-    <a class="button" th:href="@{'details/' + ${contract.userId}}" >User Details</a>
-</button>
-<button type="button">
-    <a class="button" th:href="@{''}" >Home</a>
+    <a class="button" th:href="@{/index}" >All users</a>
 </button>
 </body>
 </html>

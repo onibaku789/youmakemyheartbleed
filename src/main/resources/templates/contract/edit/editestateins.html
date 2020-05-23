@@ -5,9 +5,26 @@
     <title>Edit estate insurance</title>
 </head>
 <body>
-<form th:action="@{/}" th:object="${item}" method="post">
+<form th:action="@{/contracts/editEST}" th:object="${item}" method="post">
 
     <p><label style="font-style: oblique">Edit Estate Insurance</label></p>
+
+    <!--<label for="contractId">Contract Id</label><br>-->
+    <input type="hidden" id="contractId" th:field="*{contractId}"/>
+    <p th:if="${#fields.hasErrors('contractId')}" th:errors="*{contractId}"></p>
+
+    <!--<label for="contractId">Contract Id</label><br>-->
+    <input type="hidden" id="contractType" th:field="*{contractType}"/>
+    <p th:if="${#fields.hasErrors('contractType')}" th:errors="*{contractType}"></p>
+
+    <!--<label for="date">Date</label><br>-->
+    <input type="hidden" id="date" th:field="*{date}"/>
+    <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></p><br>
+
+    <!--<<label for="userId">User</label><br>-->
+    <input type="hidden" id="userId" th:field="*{userId}"/>
+    <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></p>
+
     <label for="beginDate">Begin Date</label><br>
     <input type="datetime-local" id="beginDate" th:field="*{beginDate}"/>
     <p th:if="${#fields.hasErrors('beginDate')}" th:errors="*{beginDate}"></p><br>
@@ -49,7 +66,7 @@
     <p th:if="${#fields.hasErrors('estatePrice')}" th:errors="*{estatePrice}"></p><br>
 
     <label for="garage">Garage</label><br>
-    <input type="number" id="garage" th:field="*{garage}"/>
+    <input type="checkbox" id="garage" th:field="*{garage}"/>
     <p th:if="${#fields.hasErrors('garage')}" th:errors="*{garage}"></p><br>
 
 
