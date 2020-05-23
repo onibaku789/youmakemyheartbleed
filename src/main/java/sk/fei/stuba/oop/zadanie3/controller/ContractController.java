@@ -28,16 +28,30 @@ public class ContractController {
         this.contractService = contractService;
     }
 
+    //TODO
     @GetMapping("/contracts/edit/{id}")
     public String editContract(@PathVariable UUID contractId, Model model) {
-        //TODO
+        Contract contract = contractService.getContractByContractId(contractId);
+        LOGGER.warn("edit "+ contract.toString());
+        model.addAttribute("item",contract);
         return "";
     }
 
+    //TODO
     @PostMapping("/contracts/edit")
-    public String updateContract(Model model) {
-        //TODO
-        return "";
+    public String updateContract(Contract item, Model model) {
+
+        LOGGER.warn("Update " + item.toString());
+        try{
+            contractService.editContract(item);
+            model.addAttribute("item", item);
+            return "user/viewoneuser";
+        }
+        catch(IllegalArgumentException ex)
+        {
+            System.err.println("Contract Update ERROR");
+            return "error";
+        }
     }
 
     @GetMapping("/contracts/add/{contractType}")
@@ -61,7 +75,7 @@ public class ContractController {
         }
     }
 
-
+    //TODO
     @PostMapping("/contracts/addEST")
     public String submitEstContract(@NotNull @ModelAttribute("item") EstateInsurance item, Model model) {
         LOGGER.warn("submitContract " + item.toString());

@@ -24,8 +24,8 @@
         <td th:text="${item.getFirstName()}"></td>
         <td th:text="${item.getLastName()}"></td>
         <td>
-            <a class="btn btn-info" th:href="@{'/edit/' + ${item.getUserId()}}">Edit</a>
-            <a class="btn btn-danger" th:href="@{'/details/' + ${item.getUserId()}}">Details</a>
+            <button><a class="btn btn-info" th:href="@{'/edit/' + ${item.getUserId()}}">Edit</a></button>
+            <button><a class="btn btn-danger" th:href="@{'/details/' + ${item.getUserId()}}">Details</a></button>
         </td>
     </tr>
     </tbody>
@@ -33,6 +33,6 @@
 </body>
 
 <p>
-    <a class="button" href="/adduser">Add new user</a>
+    <button><a class="button" href="/adduser">Add new user</a></button>
 </p>
 </html>
