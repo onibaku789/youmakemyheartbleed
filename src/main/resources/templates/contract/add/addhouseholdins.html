@@ -17,11 +17,11 @@
 
     <label for="userId">User</label><br>
     <input type="text" id="userId" th:field="*{userId}"/>
-    <p th:if="${#fields.hasErrors('user')}" th:errors="*{userId}"></p><br>
+    <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></p><br>
 
     <label for="beginDate">Begin Date</label><br>
     <input type="date" id="beginDate" th:field="*{beginDate}"/>
-    <p th:if="${#fields.hasErrors('begindate')}" th:errors="*{beginDate}"></p><br>
+    <p th:if="${#fields.hasErrors('beginDate')}" th:errors="*{beginDate}"></p><br>
 
     <label for="endDate">End Date</label><br>
     <input type="date" id="endDate" th:field="*{endDate}"/>

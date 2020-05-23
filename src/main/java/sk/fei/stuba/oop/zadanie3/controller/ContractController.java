@@ -1,5 +1,6 @@
 package sk.fei.stuba.oop.zadanie3.controller;
 
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -43,7 +44,6 @@ public class ContractController {
     public String addContract(Model model, @PathVariable String contractType) {
         switch (ContractType.valueOf(contractType)) {
             case ESTATE:
-                System.out.println("\n\nIDE BEJOTT\n\n");
                 model.addAttribute("item", new EstateInsurance());
                 return "contract/add/addestateins";
             case TRAVEL:
@@ -63,7 +63,7 @@ public class ContractController {
 
 
     @PostMapping("/contracts/addEST")
-    public String submitEstContract(@ModelAttribute("item") EstateInsurance item, Model model) {
+    public String submitEstContract(@NotNull @ModelAttribute("item") EstateInsurance item, Model model) {
         LOGGER.warn("submitContract " + item.toString());
         try {
             //TODO UPDATE USER CONTRACT LIST
