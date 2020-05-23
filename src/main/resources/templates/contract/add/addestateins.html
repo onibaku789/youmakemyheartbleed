@@ -40,9 +40,14 @@
     <input type="number" id="monthlyFee" th:field="*{monthlyFee}"/>
     <p th:if="${#fields.hasErrors('monthlyFee')}" th:errors="*{monthlyFee}"></p><br>
 
-    <label for="estateType">Estate Type</label><br>
-    <input type="text" id="estateType" th:field="*{estateType}"/>
-    <p th:if="${#fields.hasErrors('estateType')}" th:errors="*{estateType}"></p><br>
+
+    <select name="estateT">
+        <option th:each="estateT: ${estateType}"
+                th:value="${estateT}"
+                th:selected="${estateT.equals(item.getEstateType())}"
+                th:text="${estateT.toString()}"></option>
+    </select><br>
+
 
    <label for="estateAddrZipCode">Estate Addr. Zip Code</label><br>
    <input type="text" id="estateAddrZipCode" th:field="*{estateAddrZipCode}"/>

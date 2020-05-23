@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import sk.fei.stuba.oop.zadanie3.model.contract.Contract;
 import sk.fei.stuba.oop.zadanie3.model.contract.ContractType;
 import sk.fei.stuba.oop.zadanie3.model.contract.lifeinsurance.accidentinsurance.AccidentInsurance;
+import sk.fei.stuba.oop.zadanie3.model.contract.lifeinsurance.accidentinsurance.TerritorialValidity;
+import sk.fei.stuba.oop.zadanie3.model.contract.lifeinsurance.travelinsurance.PurposeOfTrip;
 import sk.fei.stuba.oop.zadanie3.model.contract.lifeinsurance.travelinsurance.TravelInsurance;
+import sk.fei.stuba.oop.zadanie3.model.contract.nonlifeinsurance.EstateType;
 import sk.fei.stuba.oop.zadanie3.model.contract.nonlifeinsurance.estateinsurance.EstateInsurance;
 import sk.fei.stuba.oop.zadanie3.model.contract.nonlifeinsurance.householdinsurance.HouseholdInsurance;
 import sk.fei.stuba.oop.zadanie3.model.user.User;
@@ -175,6 +178,7 @@ public class ContractController {
         estateInsurance.setUserId(userId);
         estateInsurance.setContractType(ContractType.ESTATE);
         model.addAttribute("item", estateInsurance);
+        model.addAttribute("estateType", EstateType.values());
         return "contract/add/addestateins";
     }
 
@@ -206,6 +210,7 @@ public class ContractController {
         accidentInsurance.setUserId(userId);
         accidentInsurance.setContractType(ContractType.ACCIDENT);
         model.addAttribute("item", accidentInsurance);
+        model.addAttribute("terrotorialValidity", TerritorialValidity.values());
         return "contract/add/addaccidentins";
     }
 
@@ -233,6 +238,7 @@ public class ContractController {
         travelInsurance.setUserId(userId);
         travelInsurance.setContractType(ContractType.TRAVEL);
         model.addAttribute("item", travelInsurance);
+        model.addAttribute("purposeOfTrip", PurposeOfTrip.values());
         return "contract/add/addtravelins";
     }
 
@@ -259,6 +265,7 @@ public class ContractController {
         householdInsurance.setUserId(userId);
         householdInsurance.setContractType(ContractType.HOUSEHOLD);
         model.addAttribute("item", householdInsurance);
+        model.addAttribute("estateType", EstateType.values());
         return "contract/add/addhouseholdins";
     }
 
