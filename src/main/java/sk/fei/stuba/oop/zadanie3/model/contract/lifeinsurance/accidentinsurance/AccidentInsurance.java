@@ -12,6 +12,7 @@ public class AccidentInsurance extends Contract {
     private int death;
     private int dailycompens;
     private TerritorialValidity territorialValidity;
+    private String insured; // INSURED - customer ID
 
     public AccidentInsurance() { super(); }
 

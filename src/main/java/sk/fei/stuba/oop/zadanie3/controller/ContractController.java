@@ -1,7 +1,6 @@
 package sk.fei.stuba.oop.zadanie3.controller;
 
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -18,16 +17,19 @@ import sk.fei.stuba.oop.zadanie3.model.contract.nonlifeinsurance.estateinsurance
 import sk.fei.stuba.oop.zadanie3.model.contract.nonlifeinsurance.householdinsurance.HouseholdInsurance;
 import sk.fei.stuba.oop.zadanie3.model.user.User;
 import sk.fei.stuba.oop.zadanie3.service.ContractService;
+import sk.fei.stuba.oop.zadanie3.service.UserService;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Controller
 public class ContractController {
     private final Logger LOGGER = LoggerFactory.getLogger(ContractController.class);
     private final ContractService contractService;
-
-    public ContractController(ContractService contractService) {
+    private final UserService userService;
+    public ContractController(ContractService contractService, UserService userService) {
         this.contractService = contractService;
+        this.userService = userService;
     }
 
     //TODO
@@ -55,20 +57,25 @@ public class ContractController {
         }
     }
 
-    @GetMapping("/contracts/add/{contractType}")
-    public String addContract(Model model, @PathVariable String contractType) {
+    @GetMapping("/contracts/{userId}/add/{contractType}")
+    public String addContract(Model model, @PathVariable String contractType,@PathVariable String userId) {
+        LOGGER.warn("ADD CONTRACT userID:  " + userId);
         switch (ContractType.valueOf(contractType)) {
             case ESTATE:
                 model.addAttribute("item", new EstateInsurance());
-                return "contract/add/addestateins";
+                model.addAttribute("userId", userId);
+                return "redirect:/contracts/addEST/" + userId;
             case TRAVEL:
                 model.addAttribute("item", new TravelInsurance());
+                model.addAttribute("userId", userId);
                 return "contract/add/addtravelins";
             case ACCIDENT:
                 model.addAttribute("item", new AccidentInsurance());
+                model.addAttribute("userId", userId);
                 return "contract/add/addaccidentins";
             case HOUSEHOLD:
                 model.addAttribute("item", new HouseholdInsurance());
+                model.addAttribute("userId", userId);
                 return "contract/add/addhouseholdins";
             default:
                 throw new IllegalArgumentException("Invalid ContractType chosen.");
@@ -76,14 +83,19 @@ public class ContractController {
     }
 
     //TODO
-    @PostMapping("/contracts/addEST")
-    public String submitEstContract(@ModelAttribute("item") EstateInsurance item, @ModelAttribute("items") User user, Model model) {
+    @GetMapping("/contracts/addEST/{userId}")
+    public String submitEstContract(@ModelAttribute("item") EstateInsurance item,
+                                    @PathVariable("userId") String userId,
+                                    Model model) {
         LOGGER.warn("submitContract " + item.toString());
         LOGGER.warn(model.toString());
+        LOGGER.warn(userId);
         try {
             //TODO UPDATE USER CONTRACT LIST
+            item.setUserId(userId);
             item.setContractId(UUID.randomUUID().toString());
             contractService.addNewContract(item);
+            model.addAttribute("users",userService.getAllUser());
             LOGGER.warn(item.toString());
             return "redirect:/contracts/details/" + item.getContractId();
             //return "user/viewoneuser/";

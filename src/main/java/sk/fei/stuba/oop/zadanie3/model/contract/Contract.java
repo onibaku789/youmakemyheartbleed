@@ -7,7 +7,7 @@ public abstract class Contract {
     private String contractId;
     private LocalDateTime date; // needed LocalDateTime ??
     private String userId;// INSURER - employee ID
-    //private String insured; // INSURED - customer ID
+
     private LocalDateTime beginDate;
     private LocalDateTime endDate;
     private BigDecimal contractPrice;

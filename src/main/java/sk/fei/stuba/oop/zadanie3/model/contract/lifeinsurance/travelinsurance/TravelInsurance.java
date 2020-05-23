@@ -12,6 +12,7 @@ public class TravelInsurance extends Contract {
 
     private boolean inEU;
     private PurposeOfTrip purpose;
+    private String insured; // INSURED - customer ID
 
     public TravelInsurance(String contractId, LocalDateTime date, String userId, LocalDateTime beginDate, LocalDateTime endDate, BigDecimal contractPrice, BigDecimal monthlyFee, ContractType contractType,
                            boolean inEU, PurposeOfTrip purpose) {

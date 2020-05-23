@@ -89,16 +89,16 @@
             <a class="button" th:href="@{/index}" >All users</a>
     </button>
     <button type="button">
-            <a class="button" th:href="@{'/contracts/add/' + 'HOUSEHOLD' }" > Add Household Insurance</a>
+            <a class="button" th:href="@{'/contracts/'+${items.getUserId()} + '/add/' + 'HOUSEHOLD/'  }" > Add Household Insurance</a>
     </button>
     <button type="button">
-            <a class="button" th:href="@{'/contracts/add/' + 'ESTATE' }" > Add Estate Insurance</a>
+            <a class="button" th:href="@{'/contracts/'+${items.getUserId()} + '/add/' + 'ESTATE/' }" > Add Estate Insurance</a>
     </button>
     <button type="button">
-            <a class="button" th:href="@{'/contracts/add/' + 'ACCIDENT' }" > Add Accident Insurance</a>
+            <a class="button" th:href="@{'/contracts/'+${items.getUserId()} + '/add/' + 'ACCIDENT/' }" > Add Accident Insurance</a>
     </button>
     <button type="button">
-            <a class="button" th:href="@{'/contracts/add/' + 'TRAVEL' }" > Add Travel Insurance</a>
+            <a class="button" th:href="@{'/contracts/'+${items.getUserId()} + '/add/' + 'TRAVEL/' }" > Add Travel Insurance</a>
     </button>
 </p>
 
