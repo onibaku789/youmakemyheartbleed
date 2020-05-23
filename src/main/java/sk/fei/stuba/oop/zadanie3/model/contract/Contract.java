@@ -4,8 +4,9 @@ import java.time.LocalDate;
 
 public abstract class Contract {
     private String contractId;
-    private LocalDate date;
-    private String userId;
+    private LocalDate date; // needed LocalDateTime ??
+    private String userId;// INSURER - employee ID
+    //private String insured; // INSURED - customer ID
     private LocalDate beginDate;
     private LocalDate endDate;
     private BigDecimal contractPrice;

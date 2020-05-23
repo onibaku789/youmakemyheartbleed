@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
           integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+
 </head>
 <body>
 <table class="pure-table pure-table-bordered">
@@ -82,12 +83,24 @@
 </tbody>
 </table>
 <p>
-    <a class="button" th:href="@{'/edit/' + ${items.getUserId()}}" >Edit user</a>
-    <a class="button" th:href="@{/index}" >All users</a>
-    <a class="button" th:href="@{'/contracts/add/' + 'HOUSEHOLD' }" > Add Household Insurance</a>
-    <a class="button" th:href="@{'/contracts/add/' + 'ESTATE' }" > Add Estate Insurance</a>
-    <a class="button" th:href="@{'/contracts/add/' + 'ACCIDENT' }" > Add Accident Insurance</a>
-    <a class="button" th:href="@{'/contracts/add/' + 'TRAVEL' }" > Add Travel Insurance</a>
+    <button type="button">
+            <a class="button" th:href="@{'/edit/' + ${items.getUserId()}}" >Edit user</a>
+    </button>
+    <button type="button">
+            <a class="button" th:href="@{/index}" >All users</a>
+    </button>
+    <button type="button">
+            <a class="button" th:href="@{'/contracts/add/' + 'HOUSEHOLD' }" > Add Household Insurance</a>
+    </button>
+    <button type="button">
+            <a class="button" th:href="@{'/contracts/add/' + 'ESTATE' }" > Add Estate Insurance</a>
+    </button>
+    <button type="button">
+            <a class="button" th:href="@{'/contracts/add/' + 'ACCIDENT' }" > Add Accident Insurance</a>
+    </button>
+    <button type="button">
+            <a class="button" th:href="@{'/contracts/add/' + 'TRAVEL' }" > Add Travel Insurance</a>
+    </button>
 </p>
 
 </body>
