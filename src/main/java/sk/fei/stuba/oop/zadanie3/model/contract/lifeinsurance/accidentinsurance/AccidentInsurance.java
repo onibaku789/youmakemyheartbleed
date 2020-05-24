@@ -21,7 +21,7 @@ public class AccidentInsurance extends Contract {
     private int dailyCompens;
     @NotNull
     private TerritorialValidity territorialValidity;
-
+    @NotBlank
     private String insured; // INSURED - customer ID
 
     public AccidentInsurance() {
@@ -68,6 +68,13 @@ public class AccidentInsurance extends Contract {
 
     public void setTerritorialValidity(TerritorialValidity territorialValidity) {
         this.territorialValidity = territorialValidity;
+    }
+    public String getInsured() {
+        return insured;
+    }
+
+    public void setInsured(String insured) {
+        this.insured = insured;
     }
 
     @Override

@@ -81,6 +81,7 @@ public class ContractRepository {
         tempAccidentInsurance.setDailyCompens(editedAccidentInsurance.getDailyCompens());
         tempAccidentInsurance.setDeath(editedAccidentInsurance.getDeath());
         tempAccidentInsurance.setTerritorialValidity(editedAccidentInsurance.getTerritorialValidity());
+        tempAccidentInsurance.setInsured(editedAccidentInsurance.getInsured());
     }
 
     private void editTravelInsurance(Contract editedContract, Contract tempContract) {
@@ -88,6 +89,7 @@ public class ContractRepository {
         TravelInsurance tempTravelInsurance = (TravelInsurance) tempContract;
         tempTravelInsurance.setInEU(editedTravelInsurance.isInEU());
         tempTravelInsurance.setPurpose(editedTravelInsurance.getPurpose());
+        tempTravelInsurance.setInsured(editedTravelInsurance.getInsured());
     }
 
     private void editHouseholdInsurance(Contract editedContract, Contract tempContract) {

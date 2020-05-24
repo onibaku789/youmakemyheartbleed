@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import sk.fei.stuba.oop.zadanie3.model.user.User;
 import sk.fei.stuba.oop.zadanie3.service.UserService;
@@ -29,15 +30,16 @@ public class UserController {
     }
 
     @PostMapping("/adduser")
-    public String submit(@ModelAttribute("item") @Valid User item, Model model) {
+    public String submit(@ModelAttribute("item") @Valid User item, Model model, BindingResult bindingResult) {
+        LOGGER.warn(bindingResult.toString());
         LOGGER.warn("submit " + item.toString());
-        try {
-            userService.addNewUser(item);
-            return "redirect:/index";
-        } catch (IllegalArgumentException ex) {
-            System.err.println("SUBMIT ERROR");
-            return "error";
-        }
+       if (!bindingResult.hasErrors()) {
+           userService.addNewUser(item);
+           return "redirect:/index";
+       }else {
+           System.err.println("SUBMIT ERROR");
+           return "user/adduser";
+       }
     }
 
     @GetMapping("edit/{id}")
@@ -65,7 +67,7 @@ public class UserController {
             return "user/viewoneuser";
         } catch (IllegalArgumentException ex) {
             System.err.println("UPDATE ERROR");
-            return "error";
+            return "redirect:/index";
         }
     }
 

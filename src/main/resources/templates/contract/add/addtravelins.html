@@ -53,6 +53,14 @@
                 th:text="${purpose.toString()}"></option>
     </select><br>
 
+    <label for="insured">Insured user</label><br>
+    <select name="insured" id="insured" th:field="*{insured}">
+        <option th:each="user: ${users}"
+                th:value="${user.getUserId().toString()}"
+                th:selected="${user.equals(item.getUserId())}"
+                th:text="${user.userId.toString()}"></option>
+    </select><br>
+
 
 
     <p> <input type="submit" value="Submit"/></p>
