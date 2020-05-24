@@ -6,7 +6,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import sk.fei.stuba.oop.zadanie3.model.user.User;
 import sk.fei.stuba.oop.zadanie3.service.UserService;
 
@@ -30,30 +33,31 @@ public class UserController {
     }
 
     @PostMapping("/adduser")
-    public String submit(@ModelAttribute("item") @Valid User item, Model model, BindingResult bindingResult) {
-        LOGGER.warn(bindingResult.toString());
-        LOGGER.warn("submit " + item.toString());
-       if (!bindingResult.hasErrors()) {
-           userService.addNewUser(item);
-           return "redirect:/index";
-       }else {
-           System.err.println("SUBMIT ERROR");
-           return "user/adduser";
-       }
+    public String submit(@Valid @ModelAttribute("item") User item, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            System.err.println("SUBMIT ERROR");
+            model.addAttribute("item", item);
+            return "user/adduser";
+
+        } else {
+            userService.addNewUser(item);
+            return "redirect:/index";
+        }
     }
 
     @GetMapping("edit/{id}")
-    public String edit(@PathVariable("id") String id, Model model) {
-        User user  = userService.getUserById(id);
+    public String edit(@PathVariable("id") String id,BindingResult bindingResult, Model model) {
+        User user = userService.getUserById(id);
         LOGGER.warn("edit " + user.toString());
-        model.addAttribute("item",user);
+        model.addAttribute("item", user);
         return "user/edituser";
     }
+
     @GetMapping("details/{id}")
     public String details(@PathVariable("id") String id, Model model) {
-        User user  = userService.getUserById(id);
+        User user = userService.getUserById(id);
         LOGGER.warn("details " + user.toString());
-        model.addAttribute("items",user);
+        model.addAttribute("items", user);
         return "user/viewoneuser";
     }
 
@@ -77,7 +81,6 @@ public class UserController {
         model.addAttribute("items", userService.getAllUser());
         return "user/viewusers";
     }
-
 
 
     @GetMapping()

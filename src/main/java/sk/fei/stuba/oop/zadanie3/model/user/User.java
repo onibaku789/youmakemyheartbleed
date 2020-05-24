@@ -3,10 +3,7 @@ package sk.fei.stuba.oop.zadanie3.model.user;
 
 import sk.fei.stuba.oop.zadanie3.model.contract.Contract;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +15,7 @@ public class User {
     @NotBlank(message = "Last name cannot be empty or null!")
     private String lastName;
     @NotNull(message = "Birth id cannot be  null!")
+    @Min(value = 1,message = "Birth id cannot be zero or less!")
     private int birthId;
     @Email
     @NotBlank
