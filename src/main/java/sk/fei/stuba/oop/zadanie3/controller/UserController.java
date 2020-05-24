@@ -46,7 +46,7 @@ public class UserController {
     }
 
     @GetMapping("edit/{id}")
-    public String edit(@PathVariable("id") String id,BindingResult bindingResult, Model model) {
+    public String edit(@PathVariable("id") String id, Model model) {
         User user = userService.getUserById(id);
         LOGGER.warn("edit " + user.toString());
         model.addAttribute("item", user);
@@ -62,16 +62,17 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public String update(@ModelAttribute("item") @Valid User item, Model model) {
+    public String update(@ModelAttribute("item") @Valid User item,BindingResult bindingResult, Model model) {
         LOGGER.warn("Update " + item.toString());
-        try {
+       if (!bindingResult.hasErrors()){
             item.setListOfContracts(userService.getUserById(item.getUserId()).getListOfContracts());
             userService.editUser(item);
             model.addAttribute("items", item);
             return "user/viewoneuser";
-        } catch (IllegalArgumentException ex) {
+        } else {
             System.err.println("UPDATE ERROR");
-            return "redirect:/index";
+            model.addAttribute("item",item);
+            return "user/edituser";
         }
     }
 

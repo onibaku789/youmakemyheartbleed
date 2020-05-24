@@ -10,12 +10,12 @@ import java.util.List;
 public class User {
 
     private String userId;
-    @NotBlank(message = "First name cannot be empty or null!")
+    @NotBlank
     private String firstName;
-    @NotBlank(message = "Last name cannot be empty or null!")
+    @NotBlank
     private String lastName;
-    @NotNull(message = "Birth id cannot be  null!")
-    @Min(value = 1,message = "Birth id cannot be zero or less!")
+    @NotNull
+    @Min(value = 1)
     private int birthId;
     @Email
     @NotBlank

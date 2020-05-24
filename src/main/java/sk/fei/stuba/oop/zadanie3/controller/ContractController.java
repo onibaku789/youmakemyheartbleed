@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -96,54 +97,70 @@ public class ContractController {
 
 
     @PostMapping("/contracts/editACC")
-    public String updateAccContract(@ModelAttribute("item") @Valid AccidentInsurance item, Model model) {
+    public String updateAccContract(@ModelAttribute("item") @Valid AccidentInsurance item, BindingResult bindingResult, Model model) {
         LOGGER.warn("Update " + item.getTerritorialValidity().toString());
-        try {
+        if (!bindingResult.hasErrors()) {
             contractService.editContract(item);
             model.addAttribute("item", item);
             return "redirect:/index";
-        } catch (IllegalArgumentException ex) {
+        } else {
             System.err.println("Contract Update ERROR");
-            return "error";
+            model.addAttribute("item", item);
+            model.addAttribute("terrotorialValidity", TerritorialValidity.values());
+            model.addAttribute("users", userService.getAllUser());
+            return "contract/edit/editaccidentins";
         }
     }
 
     @PostMapping("/contracts/editTRA")
-    public String updateTraContract(@ModelAttribute("item") @Valid TravelInsurance item, Model model) {
+    public String updateTraContract(@ModelAttribute("item") @Valid TravelInsurance item,
+                                    BindingResult bindingResult,
+                                    Model model) {
         LOGGER.warn("Update " + item.getPurpose().toString());
-        try {
+        if(!bindingResult.hasErrors()){
             contractService.editContract(item);
             model.addAttribute("item", item);
             return "redirect:/index";
-        } catch (IllegalArgumentException ex) {
+        } else{
             System.err.println("Contract Update ERROR");
-            return "error";
+            model.addAttribute("item",item);
+            model.addAttribute("purposeOfTrip", PurposeOfTrip.values());
+            model.addAttribute("users", userService.getAllUser());
+            return "contract/edit/edittravelins";
         }
     }
 
     @PostMapping("/contracts/editEST")
-    public String updateEstContract(@ModelAttribute("item") @Valid EstateInsurance item, Model model) {
+    public String updateEstContract(@ModelAttribute("item") @Valid EstateInsurance item,
+                                    BindingResult bindingResult,
+                                    Model model) {
         LOGGER.warn("Update " + item.getEstateType().toString());
-        try {
+        if(!bindingResult.hasErrors()){
             contractService.editContract(item);
             model.addAttribute("item", item);
             return "redirect:/index";
-        } catch (IllegalArgumentException ex) {
+        } else{
             System.err.println("Contract Update ERROR");
-            return "error";
+            model.addAttribute("item",item);
+            model.addAttribute("estateType", EstateType.values());
+            return "contract/edit/editestateins";
         }
     }
 
     @PostMapping("/contracts/editHOU")
-    public String updateHouContract(@ModelAttribute("item") @Valid HouseholdInsurance item, Model model) {
+    public String updateHouContract(@ModelAttribute("item") @Valid HouseholdInsurance item,
+                                    BindingResult bindingResult,
+                                    Model model) {
         LOGGER.warn("Update " + item.getEstateType().toString());
-        try {
+       if(!bindingResult.hasErrors()){
             contractService.editContract(item);
             model.addAttribute("item", item);
             return "redirect:/index";
-        } catch (IllegalArgumentException ex) {
+        } else{
             System.err.println("Contract Update ERROR");
-            return "error";
+            model.addAttribute("item",item);
+           model.addAttribute("estateType", EstateType.values());
+            return "contract/edit/edithouseholdins";
         }
     }
 
@@ -186,11 +203,12 @@ public class ContractController {
 
     @PostMapping("/contracts/addEST")
     public String submitEstContract(@ModelAttribute("item") @Valid EstateInsurance item,
+                                    BindingResult bindingResult,
                                     Model model) {
         LOGGER.warn("submitContract " + item.toString());
         LOGGER.warn(model.toString());
 
-        try {
+        if(!bindingResult.hasErrors()){
             item.setContractId(UUID.randomUUID().toString());
             contractService.addNewContract(item);
             User user = userService.getUserById(item.getUserId());
@@ -200,9 +218,11 @@ public class ContractController {
             LOGGER.warn(item.toString());
             return "redirect:/contracts/details/" + item.getContractId();
             //return "user/viewoneuser/";
-        } catch (IllegalArgumentException ex) {
+        } else {
             System.err.println("SUBMIT CONTRACT ERROR");
-            return "error";
+            model.addAttribute("estateType", EstateType.values());
+            model.addAttribute("item",item);
+            return "contract/add/addestateins";
         }
     }
 
@@ -219,9 +239,11 @@ public class ContractController {
 
 
     @PostMapping("/contracts/addACC")
-    public String submitAccContract(@ModelAttribute("item") @Valid AccidentInsurance item, Model model) {
+    public String submitAccContract(@ModelAttribute("item") @Valid AccidentInsurance item,
+                                    BindingResult bindingResult,
+                                    Model model) {
         LOGGER.warn("submitContract " + item.toString());
-        try {
+        if (!bindingResult.hasErrors()) {
 
             item.setContractId(UUID.randomUUID().toString());
             contractService.addNewContract(item);
@@ -230,9 +252,12 @@ public class ContractController {
             userService.editUser(user);
             model.addAttribute("users", userService.getAllUser());
             return "redirect:/contracts/details/" + item.getContractId();
-        } catch (IllegalArgumentException ex) {
+        } else {
             System.err.println("SUBMIT CONTRACT ERROR");
-            return "error";
+            model.addAttribute("terrotorialValidity", TerritorialValidity.values());
+            model.addAttribute("users", userService.getAllUser());
+            model.addAttribute("item", item);
+            return "contract/add/addaccidentins";
         }
     }
 
@@ -248,9 +273,11 @@ public class ContractController {
     }
 
     @PostMapping("/contracts/addTRA")
-    public String submitTraContract(@ModelAttribute("item") @Valid TravelInsurance item, Model model) {
+    public String submitTraContract(@ModelAttribute("item") @Valid TravelInsurance item,
+                                    BindingResult bindingResult,
+                                    Model model) {
         LOGGER.warn("submitContract " + item.toString());
-        try {
+        if (!bindingResult.hasErrors()) {
 
             item.setContractId(UUID.randomUUID().toString());
             contractService.addNewContract(item);
@@ -259,9 +286,12 @@ public class ContractController {
             userService.editUser(user);
             model.addAttribute("users", userService.getAllUser());
             return "redirect:/contracts/details/" + item.getContractId();
-        } catch (IllegalArgumentException ex) {
+        } else {
             System.err.println("SUBMIT CONTRACT ERROR");
-            return "error";
+            model.addAttribute("item", item);
+            model.addAttribute("purposeOfTrip", PurposeOfTrip.values());
+            model.addAttribute("users", userService.getAllUser());
+            return "contract/add/addtravelins";
         }
     }
 
@@ -276,9 +306,11 @@ public class ContractController {
     }
 
     @PostMapping("/contracts/addHOU")
-    public String submitHouContract(@ModelAttribute("item") @Valid HouseholdInsurance item, Model model) {
+    public String submitHouContract(@ModelAttribute("item") @Valid HouseholdInsurance item,
+                                    BindingResult bindingResult,
+                                    Model model) {
         LOGGER.warn("submitContract " + item.toString());
-        try {
+        if (!bindingResult.hasErrors()) {
 
             item.setContractId(UUID.randomUUID().toString());
             contractService.addNewContract(item);
@@ -287,9 +319,11 @@ public class ContractController {
             userService.editUser(user);
             model.addAttribute("users", userService.getAllUser());
             return "redirect:/contracts/details/" + item.getContractId();
-        } catch (IllegalArgumentException ex) {
+        } else {
             System.err.println("SUBMIT CONTRACT ERROR");
-            return "error";
+            model.addAttribute("item", item);
+            model.addAttribute("estateType", EstateType.values());
+            return "contract/add/addhouseholdins";
         }
     }
 
